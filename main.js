@@ -1,1 +1,1 @@
-// scripts inlined in index.html
+// scripts inlined per page

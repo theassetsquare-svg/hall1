@@ -1,5 +1,12 @@
 # 일산명월관요정
-> 경기도 일산 소재 전통 한정식 요정. 가야금 공연, 한정식 코스, 전통 주안상.
+> 경기도 일산 전통 한정식 요정. 가야금 공연, 한정식 코스, 주안상.
 대표키워드: 일산명월관요정
 메인: https://hall1.pages.dev/
+예약 방법: https://hall1.pages.dev/reservation/
+코스 요리: https://hall1.pages.dev/course/
+드레스코드: https://hall1.pages.dev/dresscode/
+주차·교통: https://hall1.pages.dev/parking/
+예산 가이드: https://hall1.pages.dev/budget/
+에티켓: https://hall1.pages.dev/manners/
+비교 가이드: https://hall1.pages.dev/compare/
 문의: 신실장 010-3695-4929
