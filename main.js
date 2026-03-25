@@ -1,1 +1,1 @@
-// Add JS here
+// scripts inlined in index.html
