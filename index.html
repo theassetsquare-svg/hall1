@@ -22,6 +22,7 @@
 {"@context":"https://schema.org","@type":["NightClub","Restaurant"],"name":"일산명월관요정","description":"경기도 일산 전통 한정식 요정. 가야금 라이브 공연, 한정식 코스, 전통 주안상.","url":"https://hall1.pages.dev/","telephone":"010-3695-4929","image":"https://hall1.pages.dev/images/og-main.png","servesCuisine":"Korean","address":{"@type":"PostalAddress","addressLocality":"일산","addressRegion":"경기도","addressCountry":"KR"},"sameAs":[]}
 </script>
 <link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/engage.css">
 </head>
 <body>
 
@@ -53,7 +54,7 @@
 
 <p>지인이 "한번 가보라"고 했을 때, 그냥 고개만 끄덕였다. 요정이라는 단어 자체가 낯설었다. TV에서나 보던 거 아닌가? 근데 금요일 밤, 일이 일찍 끝나서 별생각 없이 차를 몰았다. 네비가 안내하는 골목으로 들어서는데 분위기가 확 바뀌었다. 담장 너머로 은은한 조명. 나무 향. 주차하고 내리는 순간부터 이미 달랐다.</p>
 
-<div class="illust">
+<div class="illust scroll-reveal">
 <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
   <rect width="680" height="220" fill="#FFF9F5"/>
   <circle cx="580" cy="50" r="22" fill="#C9A96E" opacity=".15"/>
@@ -75,7 +76,7 @@
 
 <div class="grid-2">
   <a class="card-link" href="/reservation/">
-    <div class="card">
+    <div class="card scroll-reveal">
       <span class="tag">STEP 1</span>
       <h3>예약 방법</h3>
       <p>전화 한 통이면 끝. 언제, 뭘 말해야 하는지.</p>
@@ -83,7 +84,7 @@
     </div>
   </a>
   <a class="card-link" href="/course/">
-    <div class="card">
+    <div class="card scroll-reveal">
       <span class="tag">STEP 2</span>
       <h3>코스 요리</h3>
       <p>열다섯 접시. 뭐가 나오는지 미리 알아두자.</p>
@@ -91,7 +92,7 @@
     </div>
   </a>
   <a class="card-link" href="/dresscode/">
-    <div class="card">
+    <div class="card scroll-reveal">
       <span class="tag">STEP 3</span>
       <h3>드레스코드</h3>
       <p>뭘 입고 가야 할까. 긴장하지 마.</p>
@@ -99,7 +100,7 @@
     </div>
   </a>
   <a class="card-link" href="/parking/">
-    <div class="card">
+    <div class="card scroll-reveal">
       <span class="tag">STEP 4</span>
       <h3>주차·교통</h3>
       <p>헤매지 않고 찾아가는 법.</p>
@@ -107,7 +108,7 @@
     </div>
   </a>
   <a class="card-link" href="/budget/">
-    <div class="card">
+    <div class="card scroll-reveal">
       <span class="tag">STEP 5</span>
       <h3>예산 가이드</h3>
       <p>얼마면 될까. 현실적인 이야기.</p>
@@ -115,7 +116,7 @@
     </div>
   </a>
   <a class="card-link" href="/manners/">
-    <div class="card">
+    <div class="card scroll-reveal">
       <span class="tag">STEP 6</span>
       <h3>에티켓</h3>
       <p>처음이라 긴장된다면 이것만 기억해.</p>
@@ -125,7 +126,7 @@
 </div>
 
 <a class="card-link" href="/compare/">
-  <div class="card" style="text-align:center;background:#FFF9F5">
+  <div class="card scroll-reveal" style="text-align:center;background:#FFF9F5">
     <span class="tag">BONUS</span>
     <h3>어디가 나한테 맞을까?</h3>
     <p>분위기, 음식, 접근성 — 한눈에 비교.</p>
@@ -133,7 +134,7 @@
   </div>
 </a>
 
-<div class="illust">
+<div class="illust scroll-reveal">
 <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg">
   <rect width="680" height="200" fill="#FFF9F5"/>
   <circle cx="170" cy="100" r="45" fill="none" stroke="#8B0000" stroke-width="1" opacity=".15"/>
@@ -148,7 +149,7 @@
 <p>주차가 좀 불편하긴 하다. 골목이 좁아서 처음엔 헤맸다. 근데 그래도 갈 만하다. 아니, 갈 만한 정도가 아니라 꼭 가봐야 한다. 나올 때 신실장이 문 앞까지 배웅해줬다. "다음에 또 오세요." 그 한마디가 마케팅이 아니라 진심이었다. 표정을 보면 안다.</p>
 
 <!-- VS 투표 -->
-<div class="vote-sec">
+<div class="vote-sec scroll-reveal">
 <h3>당신의 선택은?</h3>
 <div class="vote-opts">
   <button class="vote-btn" onclick="vote('a')">
@@ -165,7 +166,7 @@
 </div>
 
 <!-- 퀴즈 -->
-<div class="quiz-sec">
+<div class="quiz-sec scroll-reveal">
 <h3>퀴즈 3문제</h3>
 <div class="quiz-q">
   <p>Q1. 전통 한정식은 음식이 어떻게 나올까?</p>
@@ -194,7 +195,7 @@
 </div>
 
 <!-- 카운터 -->
-<div class="counter">
+<div class="counter scroll-reveal">
 <div class="counter-num" id="viewCount">0</div>
 <div class="counter-label">오늘 이 글을 본 사람</div>
 </div>
@@ -206,6 +207,84 @@
 </button>
 
 <!-- 추천 -->
+
+<!-- ===== ENGAGEMENT COMPONENTS ===== -->
+
+<!-- Curiosity Gap -->
+<div class="curiosity-gap scroll-reveal">
+  <div class="curiosity-blur">
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">숨겨진 정보</p>
+    <p>단골들만 아는 비밀이 있다. 신실장은 두 번째 방문부터 취향을 기억한다. 지난번에 좋아했던 안주, 앉았던 자리, 선호하는 술까지. 기계가 아니라 사람이 하는 서비스. 그래서 한 번 오면 안 올 수가 없다.</p>
+  </div>
+  <button class="curiosity-unlock" onclick="revealCuriosity(this)">터치해서 확인하기</button>
+</div>
+
+<!-- Time-Gated Content -->
+<div class="time-gate scroll-reveal" data-seconds="20">
+  <div class="gate-lock">
+    <p style="color:#8B0000;font-weight:700">잠긴 콘텐츠</p>
+    <span class="countdown">20초</span>
+    <span class="gate-label">기다리면 공개됩니다</span>
+  </div>
+  <div class="gate-content">
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">공개된 비밀</p>
+    <p style="color:#555">신실장 전화번호 하나면 모든 게 해결된다. 예약, 코스 변경, 주차 안내, 자리 배정. 전화 한 통에 전부 끝난다. 복잡하게 생각할 필요 없다.</p>
+  </div>
+</div>
+
+<!-- Slot Machine -->
+<div class="slot-machine scroll-reveal">
+  <h3>오늘의 행운 뽑기</h3>
+  <p style="color:#555;font-size:.85rem">하루에 한 번! 어떤 행운이 나올까?</p>
+  <div class="slot-display">
+    <div class="slot-reel">🌙</div>
+    <div class="slot-reel">🍶</div>
+    <div class="slot-reel">🎵</div>
+  </div>
+  <button class="slot-btn" onclick="spinSlot()">뽑기</button>
+  <div class="slot-result"></div>
+</div>
+
+<!-- Reactions -->
+<div class="reactions scroll-reveal">
+  <button class="react-btn" data-emoji="❤️" onclick="react(this,'❤️')">❤️ <span class="count">0</span></button>
+  <button class="react-btn" data-emoji="🔥" onclick="react(this,'🔥')">🔥 <span class="count">0</span></button>
+  <button class="react-btn" data-emoji="👏" onclick="react(this,'👏')">👏 <span class="count">0</span></button>
+  <button class="react-btn" data-emoji="😮" onclick="react(this,'😮')">😮 <span class="count">0</span></button>
+</div>
+
+<!-- Achievement Badges -->
+<div style="text-align:center;margin:1.5rem 0" class="scroll-reveal">
+  <p style="font-size:.85rem;color:#8B0000;font-weight:700;margin-bottom:.8rem">획득한 배지</p>
+  <div class="badges">
+    <div><div class="badge" data-badge="scroll50">🏃</div><div class="badge-label">탐험가</div></div>
+    <div><div class="badge" data-badge="scroll80">🔍</div><div class="badge-label">몰입자</div></div>
+    <div><div class="badge" data-badge="scroll100">🏆</div><div class="badge-label">정복자</div></div>
+    <div><div class="badge" data-badge="curiosity">🔓</div><div class="badge-label">호기심</div></div>
+    <div><div class="badge" data-badge="slot">🎰</div><div class="badge-label">도전자</div></div>
+    <div><div class="badge" data-badge="react">💛</div><div class="badge-label">공감왕</div></div>
+    <div><div class="badge" data-badge="timegate">⏰</div><div class="badge-label">인내심</div></div>
+  </div>
+</div>
+
+<!-- Auto-Next Countdown -->
+<div class="auto-next scroll-reveal" id="autoNext">
+  <h4>다음 글 자동 이동</h4>
+  <div class="next-timer">15</div>
+  <div class="next-title">예약 방법 알아보기</div>
+  <div class="auto-next-bar"><div class="auto-next-fill" style="width:0%"></div></div>
+</div>
+
+<!-- Exit Intent Popup -->
+<div class="exit-overlay" id="exitOverlay">
+  <div class="exit-popup" style="position:relative">
+    <button class="exit-close" onclick="closeExit()">&times;</button>
+    <h3>잠깐!</h3>
+    <p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p>
+    <a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a>
+  </div>
+</div>
+
 <div class="rec-sec">
 <h3>다음에 읽을 글</h3>
 <a class="rec-card" href="/reservation/"><span>예약</span><p>전화 한 통이면 끝나는 예약 방법</p></a>
@@ -232,6 +311,11 @@ function vote(c){try{var b=document.querySelectorAll('.vote-btn');if(b[0].classL
 function checkQuiz(el,ok){try{var q=el.closest('.quiz-q');if(q.classList.contains('done'))return;q.classList.add('done');if(ok){el.classList.add('correct')}else{el.classList.add('wrong');var o=q.querySelectorAll('.quiz-opt');for(var i=0;i<o.length;i++)if(o[i].getAttribute('onclick').indexOf('true')>-1)o[i].classList.add('correct')}}catch(e){}}
 (function(){try{var d=new Date().toISOString().slice(0,10),k='vc_'+d,c=parseInt(localStorage.getItem(k)||'0')+1;localStorage.setItem(k,c);var base=127+c,el=document.getElementById('viewCount'),t0=performance.now();function ani(now){var p=Math.min((now-t0)/1200,1);el.textContent=Math.floor(base*p)+'명';if(p<1)requestAnimationFrame(ani)}requestAnimationFrame(ani)}catch(e){document.getElementById('viewCount').textContent='128명'}})();
 function shareKakao(){try{if(navigator.share){navigator.share({title:'일산명월관요정',text:'처음 가기 전 이것만 알면 된다',url:location.href})}else{window.open('https://story.kakao.com/share?url='+encodeURIComponent(location.href),'_blank','noopener')}}catch(e){}}
+</script>
+<script defer src="/engage.js">
+if(document.getElementById('autoNext')&&typeof initAutoNext==='function'){
+  initAutoNext(document.getElementById('autoNext'),'/reservation/','예약 방법 알아보기',15);
+}
 </script>
 </body>
 </html>

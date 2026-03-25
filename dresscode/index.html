@@ -21,6 +21,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"일산명월관요정 드레스코드 안내","description":"처음 방문 시 적절한 복장 가이드.","url":"https://hall1.pages.dev/dresscode/","image":"https://hall1.pages.dev/images/og-dresscode.png","author":{"@type":"Organization","name":"일산명월관요정"},"publisher":{"@type":"Organization","name":"일산명월관요정"},"mainEntityOfPage":"https://hall1.pages.dev/dresscode/"}
 </script>
+<link rel="stylesheet" href="/engage.css">
 </head>
 <body>
 
@@ -74,14 +75,92 @@
 
 <p>비즈니스 자리라면 셔츠에 재킷 정도. 넥타이까지는 안 해도 된다. 상대방이 편하게 오자고 했어도 호스트가 더 차려 입는 게 예의다. 이건 여기만 그런 게 아니라 어디서든 마찬가지다.</p>
 
-<div class="tip-box">
+<div class="tip-box scroll-reveal">
 <strong>한줄 요약:</strong>
 <p>"동네 맛집보다 한 단계 위"로 입으면 된다. 깔끔하면 된다. 그리고 양말 꼭 챙겨라.</p>
 </div>
 
-<div class="counter">
+<div class="counter scroll-reveal">
 <div class="counter-num" id="viewCount">0</div>
 <div class="counter-label">오늘 이 글을 본 사람</div>
+</div>
+
+
+<!-- ===== ENGAGEMENT COMPONENTS ===== -->
+
+<!-- Curiosity Gap -->
+<div class="curiosity-gap scroll-reveal">
+  <div class="curiosity-blur">
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">숨겨진 정보</p>
+    <p>한 가지 더. 계절감 있는 옷을 입으면 분위기가 배로 좋아진다. 가을이면 브라운 톤, 겨울이면 다크 네이비. 공간이랑 옷이 어울리면 사진도 잘 나온다.</p>
+  </div>
+  <button class="curiosity-unlock" onclick="revealCuriosity(this)">터치해서 확인하기</button>
+</div>
+
+<!-- Time-Gated Content -->
+<div class="time-gate scroll-reveal" data-seconds="20">
+  <div class="gate-lock">
+    <p style="color:#8B0000;font-weight:700">잠긴 콘텐츠</p>
+    <span class="countdown">20초</span>
+    <span class="gate-label">기다리면 공개됩니다</span>
+  </div>
+  <div class="gate-content">
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">공개된 비밀</p>
+    <p style="color:#555">신실장 전화번호 하나면 모든 게 해결된다. 예약, 코스 변경, 주차 안내, 자리 배정. 전화 한 통에 전부 끝난다. 복잡하게 생각할 필요 없다.</p>
+  </div>
+</div>
+
+<!-- Slot Machine -->
+<div class="slot-machine scroll-reveal">
+  <h3>오늘의 행운 뽑기</h3>
+  <p style="color:#555;font-size:.85rem">하루에 한 번! 어떤 행운이 나올까?</p>
+  <div class="slot-display">
+    <div class="slot-reel">🌙</div>
+    <div class="slot-reel">🍶</div>
+    <div class="slot-reel">🎵</div>
+  </div>
+  <button class="slot-btn" onclick="spinSlot()">뽑기</button>
+  <div class="slot-result"></div>
+</div>
+
+<!-- Reactions -->
+<div class="reactions scroll-reveal">
+  <button class="react-btn" data-emoji="❤️" onclick="react(this,'❤️')">❤️ <span class="count">0</span></button>
+  <button class="react-btn" data-emoji="🔥" onclick="react(this,'🔥')">🔥 <span class="count">0</span></button>
+  <button class="react-btn" data-emoji="👏" onclick="react(this,'👏')">👏 <span class="count">0</span></button>
+  <button class="react-btn" data-emoji="😮" onclick="react(this,'😮')">😮 <span class="count">0</span></button>
+</div>
+
+<!-- Achievement Badges -->
+<div style="text-align:center;margin:1.5rem 0" class="scroll-reveal">
+  <p style="font-size:.85rem;color:#8B0000;font-weight:700;margin-bottom:.8rem">획득한 배지</p>
+  <div class="badges">
+    <div><div class="badge" data-badge="scroll50">🏃</div><div class="badge-label">탐험가</div></div>
+    <div><div class="badge" data-badge="scroll80">🔍</div><div class="badge-label">몰입자</div></div>
+    <div><div class="badge" data-badge="scroll100">🏆</div><div class="badge-label">정복자</div></div>
+    <div><div class="badge" data-badge="curiosity">🔓</div><div class="badge-label">호기심</div></div>
+    <div><div class="badge" data-badge="slot">🎰</div><div class="badge-label">도전자</div></div>
+    <div><div class="badge" data-badge="react">💛</div><div class="badge-label">공감왕</div></div>
+    <div><div class="badge" data-badge="timegate">⏰</div><div class="badge-label">인내심</div></div>
+  </div>
+</div>
+
+<!-- Auto-Next Countdown -->
+<div class="auto-next scroll-reveal" id="autoNext">
+  <h4>다음 글 자동 이동</h4>
+  <div class="next-timer">15</div>
+  <div class="next-title">주차 방법 알아보기</div>
+  <div class="auto-next-bar"><div class="auto-next-fill" style="width:0%"></div></div>
+</div>
+
+<!-- Exit Intent Popup -->
+<div class="exit-overlay" id="exitOverlay">
+  <div class="exit-popup" style="position:relative">
+    <button class="exit-close" onclick="closeExit()">&times;</button>
+    <h3>잠깐!</h3>
+    <p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p>
+    <a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a>
+  </div>
 </div>
 
 <div class="rec-sec">
@@ -106,6 +185,11 @@
 <script>
 (function(){var p=document.getElementById('progress');window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)p.style.width=(window.scrollY/h*100)+'%'},{passive:true})})();
 (function(){try{var d=new Date().toISOString().slice(0,10),k='vc_d_'+d,c=parseInt(localStorage.getItem(k)||'0')+1;localStorage.setItem(k,c);var base=71+c,el=document.getElementById('viewCount'),t0=performance.now();function ani(now){var p=Math.min((now-t0)/1200,1);el.textContent=Math.floor(base*p)+'명';if(p<1)requestAnimationFrame(ani)}requestAnimationFrame(ani)}catch(e){document.getElementById('viewCount').textContent='72명'}})();
+</script>
+<script defer src="/engage.js">
+if(document.getElementById('autoNext')&&typeof initAutoNext==='function'){
+  initAutoNext(document.getElementById('autoNext'),'/parking/','주차 방법 알아보기',15);
+}
 </script>
 </body>
 </html>

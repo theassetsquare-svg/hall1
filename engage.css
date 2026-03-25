@@ -1,0 +1,103 @@
+/* ===== ENGAGEMENT ENGINE CSS ===== */
+
+/* Reading Timer Bar */
+.read-timer{position:fixed;top:3px;right:12px;z-index:9997;background:rgba(255,255,255,.95);border-radius:20px;padding:4px 12px;font-size:.72rem;color:#8B0000;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.1);backdrop-filter:blur(6px);transition:all .3s}
+.read-timer .msg{color:#555;font-weight:400;margin-left:4px}
+
+/* Secret Discovery Progress */
+.secret-progress{position:fixed;top:46px;right:12px;z-index:9996;background:rgba(255,255,255,.95);border-radius:12px;padding:8px 14px;font-size:.75rem;box-shadow:0 2px 8px rgba(0,0,0,.1);backdrop-filter:blur(6px);max-width:200px}
+.secret-progress .bar{height:4px;background:#eee;border-radius:2px;margin-top:4px;overflow:hidden}
+.secret-progress .fill{height:100%;background:linear-gradient(90deg,#8B0000,#C9A96E);border-radius:2px;transition:width .5s ease}
+.secret-progress .label{color:#8B0000;font-weight:700}
+
+/* Live Activity Feed */
+.live-feed{position:fixed;bottom:70px;left:12px;z-index:9995;max-width:280px}
+.live-item{background:rgba(255,255,255,.95);border-radius:10px;padding:8px 14px;font-size:.78rem;color:#555;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:6px;animation:slideInLeft .4s ease;backdrop-filter:blur(6px);border-left:3px solid #22C55E}
+.live-item strong{color:#111}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+
+/* Curiosity Gap - Blurred Content */
+.curiosity-gap{position:relative;overflow:hidden;border-radius:12px;margin:1.5rem 0}
+.curiosity-blur{filter:blur(8px);user-select:none;padding:1.5rem;background:#FFF9F5;transition:filter .5s}
+.curiosity-gap.revealed .curiosity-blur{filter:none;user-select:auto}
+.curiosity-unlock{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#8B0000;color:#fff;border:none;padding:.7rem 1.5rem;border-radius:50px;font-size:.9rem;font-weight:700;cursor:pointer;z-index:2;box-shadow:0 4px 15px rgba(139,0,0,.3);transition:all .2s;font-family:inherit}
+.curiosity-unlock:hover{transform:translate(-50%,-50%) scale(1.05);box-shadow:0 6px 20px rgba(139,0,0,.4)}
+.curiosity-gap.revealed .curiosity-unlock{display:none}
+
+/* Time-Gated Content */
+.time-gate{background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);padding:1.5rem;margin:1.5rem 0;text-align:center;border:2px dashed #eee}
+.time-gate.locked .gate-content{display:none}
+.time-gate.unlocked{border-color:#C9A96E;border-style:solid;animation:gateUnlock .5s ease}
+.time-gate.unlocked .gate-lock{display:none}
+.time-gate.unlocked .gate-content{display:block;animation:fadeUp .5s ease}
+.gate-lock{color:#555;font-size:.9rem}
+.gate-lock .countdown{font-size:2rem;font-weight:800;color:#8B0000;display:block;margin:.5rem 0}
+.gate-lock .gate-label{font-size:.8rem;color:#999}
+@keyframes gateUnlock{from{transform:scale(.97);opacity:.7}to{transform:scale(1);opacity:1}}
+
+/* Slot Machine / Spin Wheel */
+.slot-machine{background:linear-gradient(135deg,#FFF9F5,#fff);border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.08);padding:2rem;margin:2rem 0;text-align:center;border:1px solid #eee}
+.slot-machine h3{color:#8B0000;margin-bottom:1rem}
+.slot-display{display:flex;justify-content:center;gap:8px;margin:1rem 0}
+.slot-reel{width:70px;height:70px;background:#fff;border:2px solid #eee;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2rem;overflow:hidden;transition:all .1s}
+.slot-reel.spinning{animation:slotSpin .1s linear infinite;border-color:#C9A96E}
+@keyframes slotSpin{0%{transform:translateY(-2px)}50%{transform:translateY(2px)}100%{transform:translateY(-2px)}}
+.slot-btn{background:linear-gradient(135deg,#8B0000,#a01010);color:#fff;border:none;padding:.8rem 2.5rem;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 4px 15px rgba(139,0,0,.3);font-family:inherit;margin-top:.5rem}
+.slot-btn:hover{transform:scale(1.03);box-shadow:0 6px 20px rgba(139,0,0,.4)}
+.slot-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.slot-result{margin-top:1rem;font-size:1rem;font-weight:700;color:#8B0000;min-height:1.5rem;animation:fadeUp .3s ease}
+
+/* Achievement Badges */
+.badges{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0}
+.badge{width:50px;height:50px;border-radius:50%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:.3;transition:all .4s;border:2px solid #eee}
+.badge.earned{opacity:1;background:#FFF9F5;border-color:#C9A96E;animation:badgePop .4s ease;box-shadow:0 2px 8px rgba(201,169,110,.3)}
+@keyframes badgePop{0%{transform:scale(0)}50%{transform:scale(1.3)}100%{transform:scale(1)}}
+.badge-label{font-size:.65rem;color:#555;text-align:center;margin-top:.2rem}
+
+/* Reactions */
+.reactions{display:flex;justify-content:center;gap:.8rem;margin:1.5rem 0}
+.react-btn{background:#fff;border:1px solid #eee;border-radius:50px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.3rem;font-family:inherit}
+.react-btn:hover{border-color:#C9A96E;transform:scale(1.05)}
+.react-btn.active{background:#FFF9F5;border-color:#C9A96E}
+.react-btn .count{font-size:.75rem;color:#555;font-weight:600}
+.react-float{position:fixed;pointer-events:none;font-size:1.5rem;z-index:9999;animation:floatUp 1s ease forwards}
+@keyframes floatUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+
+/* Auto-Next Countdown */
+.auto-next{background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);padding:1.5rem;margin:2rem 0;text-align:center;border:1px solid #eee}
+.auto-next h4{color:#8B0000;margin-bottom:.5rem;font-size:1rem}
+.auto-next .next-timer{font-size:2.5rem;font-weight:800;color:#C9A96E}
+.auto-next .next-title{color:#555;font-size:.9rem;margin-top:.3rem}
+.auto-next-bar{height:3px;background:#eee;border-radius:2px;margin-top:.8rem;overflow:hidden}
+.auto-next-fill{height:100%;background:linear-gradient(90deg,#8B0000,#C9A96E);transition:width .1s linear}
+
+/* Exit Intent Popup */
+.exit-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.exit-overlay.show{display:flex}
+.exit-popup{background:#fff;border-radius:16px;padding:2rem;max-width:360px;width:90%;text-align:center;animation:popIn .3s ease;box-shadow:0 8px 30px rgba(0,0,0,.2)}
+@keyframes popIn{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.exit-popup h3{color:#8B0000;margin-bottom:.5rem;font-size:1.2rem}
+.exit-popup p{color:#555;font-size:.9rem;margin-bottom:1rem}
+.exit-popup .exit-cta{display:inline-block;background:#8B0000;color:#fff;padding:.7rem 1.5rem;border-radius:50px;font-weight:700;text-decoration:none;font-size:.95rem;transition:transform .2s}
+.exit-popup .exit-cta:hover{transform:scale(1.03);text-decoration:none}
+.exit-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.2rem;color:#999;cursor:pointer}
+
+/* Streak */
+.streak-toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(139,0,0,.95);color:#fff;padding:1rem 2rem;border-radius:16px;font-size:1.1rem;font-weight:700;z-index:99998;animation:streakIn .5s ease;box-shadow:0 4px 20px rgba(139,0,0,.4);pointer-events:none}
+@keyframes streakIn{0%{transform:translate(-50%,-50%) scale(0);opacity:0}60%{transform:translate(-50%,-50%) scale(1.1);opacity:1}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
+
+/* Toast notification */
+.toast{position:fixed;bottom:80px;right:12px;background:rgba(255,255,255,.95);border-radius:12px;padding:10px 16px;font-size:.8rem;color:#111;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:9997;animation:toastIn .4s ease;backdrop-filter:blur(6px);border-left:3px solid #C9A96E;max-width:250px}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* Scroll reveal */
+.scroll-reveal{opacity:0;transform:translateY(20px);transition:all .5s ease}
+.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:480px){
+  .read-timer{right:8px;font-size:.65rem;padding:3px 8px}
+  .secret-progress{right:8px;max-width:160px;font-size:.7rem}
+  .live-feed{left:8px;max-width:220px}
+  .live-item{font-size:.72rem;padding:6px 10px}
+  .slot-reel{width:55px;height:55px;font-size:1.5rem}
+}
