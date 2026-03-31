@@ -19,5 +19,8 @@
   "homepage": "https://github.com/theassetsquare-svg/hall1#readme",
   "dependencies": {
     "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^0.1.97"
   }
 }
