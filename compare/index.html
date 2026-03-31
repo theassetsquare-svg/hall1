@@ -94,18 +94,13 @@
 <p>밥집을 찾는 거면 아무 데나. 경험을 찾는 거면 일산명월관요정이다.</p>
 </div>
 
-<div class="counter scroll-reveal">
-<div class="counter-num" id="viewCount">0</div>
-<div class="counter-label">오늘 이 글을 본 사람</div>
-</div>
-
 
 <!-- ===== ENGAGEMENT COMPONENTS ===== -->
 
 <!-- Curiosity Gap -->
 <div class="curiosity-gap scroll-reveal">
   <div class="curiosity-blur">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">숨겨진 정보</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">라이브 공연의 차이</p>
     <p>이 동네에서 가야금 라이브를 하는 곳은 여기뿐이다. 나머지는 전부 스피커다. 블루투스로 틀어놓는다. 소리는 비슷할 수 있다. 근데 공기가 다르다. 줄을 뜯을 때 공기가 떨리는 게 느껴진다. 녹음에서는 절대 안 오는 감각이다.</p>
   </div>
   <button class="curiosity-unlock" onclick="revealCuriosity(this)">터치해서 확인하기</button>
@@ -119,66 +114,13 @@
     <span class="gate-label">기다리면 공개됩니다</span>
   </div>
   <div class="gate-content">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">공개된 비밀</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">사진으로 판단하면 안 되는 이유</p>
     <p style="color:#555">비교하면서 알게 된 게 하나 있다. 좋은 곳일수록 사진이 별로다. 명월관 사진을 보면 솔직히 감이 안 온다. 조명이 어둡고 분위기가 카메라에 안 담긴다. 근데 직접 가면 다르다. 사진보다 열 배는 낫다. 그래서 사진 보고 판단하지 마라.</p>
   </div>
 </div>
 
-<!-- Slot Machine -->
-<div class="slot-machine scroll-reveal">
-  <h3>오늘의 행운 뽑기</h3>
-  <p style="color:#555;font-size:.85rem">하루에 한 번! 어떤 행운이 나올까?</p>
-  <div class="slot-display">
-    <div class="slot-reel">🌙</div>
-    <div class="slot-reel">🍶</div>
-    <div class="slot-reel">🎵</div>
-  </div>
-  <button class="slot-btn" onclick="spinSlot()">뽑기</button>
-  <div class="slot-result"></div>
-</div>
-
-<!-- Reactions -->
-<div class="reactions scroll-reveal">
-  <button class="react-btn" data-emoji="❤️" onclick="react(this,'❤️')">❤️ <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="🔥" onclick="react(this,'🔥')">🔥 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="👏" onclick="react(this,'👏')">👏 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="😮" onclick="react(this,'😮')">😮 <span class="count">0</span></button>
-</div>
-
-<!-- Achievement Badges -->
-<div style="text-align:center;margin:1.5rem 0" class="scroll-reveal">
-  <p style="font-size:.85rem;color:#8B0000;font-weight:700;margin-bottom:.8rem">획득한 배지</p>
-  <div class="badges">
-    <div><div class="badge" data-badge="scroll50">🏃</div><div class="badge-label">탐험가</div></div>
-    <div><div class="badge" data-badge="scroll80">🔍</div><div class="badge-label">몰입자</div></div>
-    <div><div class="badge" data-badge="scroll100">🏆</div><div class="badge-label">정복자</div></div>
-    <div><div class="badge" data-badge="curiosity">🔓</div><div class="badge-label">호기심</div></div>
-    <div><div class="badge" data-badge="slot">🎰</div><div class="badge-label">도전자</div></div>
-    <div><div class="badge" data-badge="react">💛</div><div class="badge-label">공감왕</div></div>
-    <div><div class="badge" data-badge="timegate">⏰</div><div class="badge-label">인내심</div></div>
-  </div>
-</div>
-
-<!-- Auto-Next Countdown -->
-<div class="auto-next scroll-reveal" id="autoNext">
-  <h4>다음 글 자동 이동</h4>
-  <div class="next-timer">15</div>
-  <div class="next-title">메인으로 돌아가기</div>
-  <div class="auto-next-bar"><div class="auto-next-fill" style="width:0%"></div></div>
-</div>
-
-<!-- Exit Intent Popup -->
-<div class="exit-overlay" id="exitOverlay">
-  <div class="exit-popup" style="position:relative">
-    <button class="exit-close" onclick="closeExit()">&times;</button>
-    <h3>잠깐!</h3>
-    <p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p>
-    <a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a>
-  </div>
-</div>
-
 <div class="rec-sec">
-<h3>명월관 가이드 더 보기</h3>
+<h3>결정했으면 바로 시작</h3>
 <a class="rec-card" href="/reservation/" target="_blank" rel="noopener noreferrer"><span>예약</span><p>전화 한 통이면 끝나는 예약 방법</p></a>
 <a class="rec-card" href="/course/" target="_blank" rel="noopener noreferrer"><span>코스</span><p>열다섯 접시, 뭐가 나오는지</p></a>
 <a class="rec-card" href="/manners/" target="_blank" rel="noopener noreferrer"><span>에티켓</span><p>처음이라 긴장된다면</p></a>

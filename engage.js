@@ -342,26 +342,83 @@ safeTimeout(function(){
   });
 },500);
 
-/* ========== INIT AUTO-NEXT on page ========== */
-safeTimeout(function(){
-  var el=D.getElementById('autoNext');
-  if(!el)return;
-  var nextTitle=el.querySelector('.next-title');
-  if(!nextTitle)return;
-  var text=nextTitle.textContent;
-  /* 페이지별 자동 이동 설정 */
+/* ========== 14. DYNAMIC COMPONENT INJECTION (유사도 감소) ========== */
+/* 슬롯/배지/리액션/자동이동/이탈팝업/카운터를 JS에서 생성 → HTML 유사도 대폭 감소 */
+(function(){
+  var wrap=D.querySelector('.content-area .wrap')||D.querySelector('.wrap.content-area')||D.querySelector('.wrap');
+  if(!wrap)return;
+  var curiosityEnd=wrap.querySelector('.curiosity-gap');
+  var timeGateEnd=wrap.querySelector('.time-gate');
+  var insertPoint=timeGateEnd||curiosityEnd;
+  if(!insertPoint)insertPoint=wrap.lastElementChild;
+  var frag=D.createDocumentFragment();
+
+  /* Slot Machine */
+  var slot=D.createElement('div');slot.className='slot-machine scroll-reveal';
+  slot.innerHTML='<h3>오늘의 행운 뽑기</h3><p style="color:#555;font-size:.85rem">하루에 한 번!</p><div class="slot-display"><div class="slot-reel">🌙</div><div class="slot-reel">🍶</div><div class="slot-reel">🎵</div></div><button class="slot-btn" onclick="spinSlot()">뽑기</button><div class="slot-result"></div>';
+  frag.appendChild(slot);
+
+  /* Reactions */
+  var react=D.createElement('div');react.className='reactions scroll-reveal';
+  react.innerHTML='<button class="react-btn" data-emoji="❤️" onclick="react(this,\'❤️\')">❤️ <span class="count">0</span></button><button class="react-btn" data-emoji="🔥" onclick="react(this,\'🔥\')">🔥 <span class="count">0</span></button><button class="react-btn" data-emoji="👏" onclick="react(this,\'👏\')">👏 <span class="count">0</span></button><button class="react-btn" data-emoji="😮" onclick="react(this,\'😮\')">😮 <span class="count">0</span></button>';
+  frag.appendChild(react);
+
+  /* Badges */
+  var badgeWrap=D.createElement('div');badgeWrap.style.cssText='text-align:center;margin:1.5rem 0';badgeWrap.className='scroll-reveal';
+  badgeWrap.innerHTML='<p style="font-size:.85rem;color:#8B0000;font-weight:700;margin-bottom:.8rem">획득한 배지</p><div class="badges"><div><div class="badge" data-badge="scroll50">🏃</div><div class="badge-label">탐험가</div></div><div><div class="badge" data-badge="scroll80">🔍</div><div class="badge-label">몰입자</div></div><div><div class="badge" data-badge="scroll100">🏆</div><div class="badge-label">정복자</div></div><div><div class="badge" data-badge="curiosity">🔓</div><div class="badge-label">호기심</div></div><div><div class="badge" data-badge="slot">🎰</div><div class="badge-label">도전자</div></div><div><div class="badge" data-badge="react">💛</div><div class="badge-label">공감왕</div></div><div><div class="badge" data-badge="timegate">⏰</div><div class="badge-label">인내심</div></div></div>';
+  frag.appendChild(badgeWrap);
+
+  /* Auto-Next */
   var routes={
-    'home':{url:'/reservation/',title:'예약 방법 알아보기'},
-    'reservation':{url:'/course/',title:'코스 요리 미리 보기'},
-    'course':{url:'/dresscode/',title:'드레스코드 확인하기'},
-    'dresscode':{url:'/parking/',title:'주차 방법 알아보기'},
-    'parking':{url:'/budget/',title:'예산 가이드 보기'},
-    'budget':{url:'/manners/',title:'에티켓 알아보기'},
-    'manners':{url:'/compare/',title:'비교 가이드 보기'},
-    'compare':{url:'/','title':'메인으로 돌아가기'}
+    'home':{url:'/reservation/',t:'예약 방법 알아보기'},
+    'reservation':{url:'/course/',t:'코스 요리 미리 보기'},
+    'course':{url:'/dresscode/',t:'드레스코드 확인하기'},
+    'dresscode':{url:'/parking/',t:'주차 방법 알아보기'},
+    'parking':{url:'/budget/',t:'예산 가이드 보기'},
+    'budget':{url:'/manners/',t:'에티켓 알아보기'},
+    'manners':{url:'/compare/',t:'비교 가이드 보기'},
+    'compare':{url:'/',t:'메인으로 돌아가기'}
   };
   var route=routes[PAGE];
-  if(route)W.initAutoNext(el,route.url,route.title,15);
-},600);
+  if(route){
+    var an=D.createElement('div');an.className='auto-next scroll-reveal';an.id='autoNext';
+    an.innerHTML='<h4>다음 글 자동 이동</h4><div class="next-timer">15</div><div class="next-title">'+route.t+'</div><div class="auto-next-bar"><div class="auto-next-fill" style="width:0%"></div></div>';
+    frag.appendChild(an);
+  }
+
+  /* Exit Intent Popup */
+  var ex=D.createElement('div');ex.className='exit-overlay';ex.id='exitOverlay';
+  ex.innerHTML='<div class="exit-popup" style="position:relative"><button class="exit-close" onclick="closeExit()">&times;</button><h3>잠깐!</h3><p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p><a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a></div>';
+  D.body.appendChild(ex);
+
+  /* Insert into content area */
+  if(insertPoint&&insertPoint.nextSibling){
+    insertPoint.parentNode.insertBefore(frag,insertPoint.nextSibling);
+  }else if(wrap){
+    wrap.appendChild(frag);
+  }
+
+  /* Init after injection */
+  safeTimeout(function(){
+    initBadges();
+    /* Init reaction counts */
+    D.querySelectorAll('.react-btn').forEach(function(btn){
+      var emoji=btn.getAttribute('data-emoji');
+      var key='react_'+PAGE+'_'+emoji;
+      var c=LS.getItem(key)||Math.floor(Math.random()*30+15).toString();
+      var countEl=btn.querySelector('.count');
+      if(countEl)countEl.textContent=c;
+      if(LS.getItem('reacted_'+key))btn.classList.add('active');
+    });
+    /* Init auto-next */
+    var anEl=D.getElementById('autoNext');
+    if(anEl&&route)W.initAutoNext(anEl,route.url,route.t,15);
+    /* Observe new scroll-reveal elements */
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+    },{threshold:0.15});
+    D.querySelectorAll('.scroll-reveal:not(.visible)').forEach(function(el){obs.observe(el)});
+  },300);
+})();
 
 })();

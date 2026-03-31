@@ -86,21 +86,16 @@
 <p>정리하면 이거다. 양말 깨끗한 거 신어라. 술잔 받을 때 두 손으로. 사진은 플래시 끄고. 나갈 때 인사. 끝이다. 이 이상 복잡하게 생각하면 손해다.</p>
 </div>
 
-<div class="counter scroll-reveal">
-<div class="counter-num" id="viewCount">0</div>
-<div class="counter-label">오늘 이 글을 본 사람</div>
-</div>
-
 
 <!-- ===== ENGAGEMENT COMPONENTS ===== -->
 
 <!-- Curiosity Gap -->
 <div class="curiosity-gap scroll-reveal">
   <div class="curiosity-blur">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">숨겨진 정보</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">연주자한테 곡 요청하는 법</p>
     <p>이거 진짜 아는 사람 별로 없다. 가야금 연주자한테 곡을 요청할 수 있다. "아리랑 한번 해주실 수 있나요?" 하면 바로 연주한다. 그 순간 테이블이 조용해진다. 다들 듣는다. 내가 요청한 곡을. 이 느낌. 직접 해봐야 안다.</p>
   </div>
-  <button class="curiosity-unlock" onclick="revealCuriosity(this)">터치해서 확인하기</button>
+  <button class="curiosity-unlock" onclick="revealCuriosity(this)">궁금하면 눌러봐</button>
 </div>
 
 <!-- Time-Gated Content -->
@@ -108,69 +103,16 @@
   <div class="gate-lock">
     <p style="color:#8B0000;font-weight:700">잠긴 콘텐츠</p>
     <span class="countdown">20초</span>
-    <span class="gate-label">기다리면 공개됩니다</span>
+    <span class="gate-label">시간이 지나면 보입니다</span>
   </div>
   <div class="gate-content">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">공개된 비밀</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">진짜 중요한 매너</p>
     <p style="color:#555">에티켓 중에 제일 중요한 건 따로 있다. 분위기다. 여기는 조용한 곳이다. 옆 방에 소리가 들린다. 너무 크게 웃거나 소리 지르면 민폐다. 적당히 즐기면서 적당히 조용하게. 이 밸런스를 아는 사람이 진짜 멋있는 사람이다.</p>
   </div>
 </div>
 
-<!-- Slot Machine -->
-<div class="slot-machine scroll-reveal">
-  <h3>오늘의 행운 뽑기</h3>
-  <p style="color:#555;font-size:.85rem">하루에 한 번! 어떤 행운이 나올까?</p>
-  <div class="slot-display">
-    <div class="slot-reel">🌙</div>
-    <div class="slot-reel">🍶</div>
-    <div class="slot-reel">🎵</div>
-  </div>
-  <button class="slot-btn" onclick="spinSlot()">뽑기</button>
-  <div class="slot-result"></div>
-</div>
-
-<!-- Reactions -->
-<div class="reactions scroll-reveal">
-  <button class="react-btn" data-emoji="❤️" onclick="react(this,'❤️')">❤️ <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="🔥" onclick="react(this,'🔥')">🔥 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="👏" onclick="react(this,'👏')">👏 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="😮" onclick="react(this,'😮')">😮 <span class="count">0</span></button>
-</div>
-
-<!-- Achievement Badges -->
-<div style="text-align:center;margin:1.5rem 0" class="scroll-reveal">
-  <p style="font-size:.85rem;color:#8B0000;font-weight:700;margin-bottom:.8rem">획득한 배지</p>
-  <div class="badges">
-    <div><div class="badge" data-badge="scroll50">🏃</div><div class="badge-label">탐험가</div></div>
-    <div><div class="badge" data-badge="scroll80">🔍</div><div class="badge-label">몰입자</div></div>
-    <div><div class="badge" data-badge="scroll100">🏆</div><div class="badge-label">정복자</div></div>
-    <div><div class="badge" data-badge="curiosity">🔓</div><div class="badge-label">호기심</div></div>
-    <div><div class="badge" data-badge="slot">🎰</div><div class="badge-label">도전자</div></div>
-    <div><div class="badge" data-badge="react">💛</div><div class="badge-label">공감왕</div></div>
-    <div><div class="badge" data-badge="timegate">⏰</div><div class="badge-label">인내심</div></div>
-  </div>
-</div>
-
-<!-- Auto-Next Countdown -->
-<div class="auto-next scroll-reveal" id="autoNext">
-  <h4>다음 글 자동 이동</h4>
-  <div class="next-timer">15</div>
-  <div class="next-title">비교 가이드 보기</div>
-  <div class="auto-next-bar"><div class="auto-next-fill" style="width:0%"></div></div>
-</div>
-
-<!-- Exit Intent Popup -->
-<div class="exit-overlay" id="exitOverlay">
-  <div class="exit-popup" style="position:relative">
-    <button class="exit-close" onclick="closeExit()">&times;</button>
-    <h3>잠깐!</h3>
-    <p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p>
-    <a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a>
-  </div>
-</div>
-
 <div class="rec-sec">
-<h3>명월관 가이드 더 보기</h3>
+<h3>에티켓 알았으면 이제</h3>
 <a class="rec-card" href="/dresscode/" target="_blank" rel="noopener noreferrer"><span>복장</span><p>뭘 입고 가야 할지 정리했다</p></a>
 <a class="rec-card" href="/course/" target="_blank" rel="noopener noreferrer"><span>코스</span><p>어떤 음식이 나오는지 미리 보기</p></a>
 <a class="rec-card" href="/reservation/" target="_blank" rel="noopener noreferrer"><span>예약</span><p>전화 한 통이면 끝</p></a>

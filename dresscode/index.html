@@ -84,18 +84,13 @@
 <p>일산명월관요정 드레스코드는 깔끔하면 된다. 딱 한 줄이다. 그리고 양말. 제발 양말.</p>
 </div>
 
-<div class="counter scroll-reveal">
-<div class="counter-num" id="viewCount">0</div>
-<div class="counter-label">오늘 이 글을 본 사람</div>
-</div>
-
 
 <!-- ===== ENGAGEMENT COMPONENTS ===== -->
 
 <!-- Curiosity Gap -->
 <div class="curiosity-gap scroll-reveal">
   <div class="curiosity-blur">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">숨겨진 정보</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">사진 잘 나오는 옷 색깔</p>
     <p>찍어둬야 할 꿀팁. 여기서 사진 찍을 생각이면 옷 색깔을 신경 써라. 가을이면 브라운 톤, 겨울이면 짙은 남색. 한옥 배경에 이 색들이 미친 듯이 잘 어울린다. 인스타에 올리면 "여기 어디야" 댓글이 달린다.</p>
   </div>
   <button class="curiosity-unlock" onclick="revealCuriosity(this)">터치해서 확인하기</button>
@@ -109,66 +104,13 @@
     <span class="gate-label">기다리면 공개됩니다</span>
   </div>
   <div class="gate-content">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">공개된 비밀</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">겨울의 온돌 비밀</p>
     <p style="color:#555">한 가지 더 알려줄게. 겨울에 가면 방바닥이 따뜻하다. 온돌이다. 진짜 온돌. 엉덩이부터 따뜻해지면서 온몸이 풀린다. 셔츠 한 장이면 충분하다. 두꺼운 외투는 입구에서 맡겨줘.</p>
   </div>
 </div>
 
-<!-- Slot Machine -->
-<div class="slot-machine scroll-reveal">
-  <h3>오늘의 행운 뽑기</h3>
-  <p style="color:#555;font-size:.85rem">하루에 한 번! 어떤 행운이 나올까?</p>
-  <div class="slot-display">
-    <div class="slot-reel">🌙</div>
-    <div class="slot-reel">🍶</div>
-    <div class="slot-reel">🎵</div>
-  </div>
-  <button class="slot-btn" onclick="spinSlot()">뽑기</button>
-  <div class="slot-result"></div>
-</div>
-
-<!-- Reactions -->
-<div class="reactions scroll-reveal">
-  <button class="react-btn" data-emoji="❤️" onclick="react(this,'❤️')">❤️ <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="🔥" onclick="react(this,'🔥')">🔥 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="👏" onclick="react(this,'👏')">👏 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="😮" onclick="react(this,'😮')">😮 <span class="count">0</span></button>
-</div>
-
-<!-- Achievement Badges -->
-<div style="text-align:center;margin:1.5rem 0" class="scroll-reveal">
-  <p style="font-size:.85rem;color:#8B0000;font-weight:700;margin-bottom:.8rem">획득한 배지</p>
-  <div class="badges">
-    <div><div class="badge" data-badge="scroll50">🏃</div><div class="badge-label">탐험가</div></div>
-    <div><div class="badge" data-badge="scroll80">🔍</div><div class="badge-label">몰입자</div></div>
-    <div><div class="badge" data-badge="scroll100">🏆</div><div class="badge-label">정복자</div></div>
-    <div><div class="badge" data-badge="curiosity">🔓</div><div class="badge-label">호기심</div></div>
-    <div><div class="badge" data-badge="slot">🎰</div><div class="badge-label">도전자</div></div>
-    <div><div class="badge" data-badge="react">💛</div><div class="badge-label">공감왕</div></div>
-    <div><div class="badge" data-badge="timegate">⏰</div><div class="badge-label">인내심</div></div>
-  </div>
-</div>
-
-<!-- Auto-Next Countdown -->
-<div class="auto-next scroll-reveal" id="autoNext">
-  <h4>다음 글 자동 이동</h4>
-  <div class="next-timer">15</div>
-  <div class="next-title">주차 방법 알아보기</div>
-  <div class="auto-next-bar"><div class="auto-next-fill" style="width:0%"></div></div>
-</div>
-
-<!-- Exit Intent Popup -->
-<div class="exit-overlay" id="exitOverlay">
-  <div class="exit-popup" style="position:relative">
-    <button class="exit-close" onclick="closeExit()">&times;</button>
-    <h3>잠깐!</h3>
-    <p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p>
-    <a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a>
-  </div>
-</div>
-
 <div class="rec-sec">
-<h3>명월관 가이드 더 보기</h3>
+<h3>준비됐으면 이것도</h3>
 <a class="rec-card" href="/manners/" target="_blank" rel="noopener noreferrer"><span>에티켓</span><p>처음이라 긴장된다면 이것만 기억해</p></a>
 <a class="rec-card" href="/parking/" target="_blank" rel="noopener noreferrer"><span>주차</span><p>골목이 좁다. 미리 알고 가자</p></a>
 <a class="rec-card" href="/course/" target="_blank" rel="noopener noreferrer"><span>코스</span><p>뭐가 나오는지 미리 알아두자</p></a>

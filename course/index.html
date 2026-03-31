@@ -97,18 +97,13 @@
 <p>일산명월관요정에서 해산물 못 먹는다고? 매운 거 못 먹는다고? 예약할 때 한마디만 해라. 신실장이 알아서 빼준다. 대신 다른 걸로 채워 넣어준다. 빈자리 없이. 이 융통성. 프랜차이즈에서는 불가능한 거다.</p>
 </div>
 
-<div class="counter scroll-reveal">
-<div class="counter-num" id="viewCount">0</div>
-<div class="counter-label">오늘 이 글을 본 사람</div>
-</div>
-
 
 <!-- ===== ENGAGEMENT COMPONENTS ===== -->
 
 <!-- Curiosity Gap -->
 <div class="curiosity-gap scroll-reveal">
   <div class="curiosity-blur">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">숨겨진 정보</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">계절별 비밀 메뉴</p>
     <p>봄에 가면 냉이 된장이 나온다. 여름에는 전복 물회. 가을? 송이버섯 전골. 겨울에는 꿩 만두가 뚝배기에 담겨 나온다. 네 번 가면 네 번 다른 코스를 먹는 셈이다. 단골 중에 "사계절 다 왔다"는 사람이 꽤 있다. 도장 깨기하듯이.</p>
   </div>
   <button class="curiosity-unlock" onclick="revealCuriosity(this)">터치해서 확인하기</button>
@@ -122,66 +117,13 @@
     <span class="gate-label">기다리면 공개됩니다</span>
   </div>
   <div class="gate-content">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">공개된 비밀</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">주방장의 고집</p>
     <p style="color:#555">주방장이 30년 넘게 한정식만 했다. 다른 거 안 했다. 호텔 뷔페 제안도 있었는데 거절했다고 한다. 왜? "코스가 아니면 의미 없다"는 게 철학이란다. 고집이다. 근데 그 고집이 맛으로 나온다.</p>
   </div>
 </div>
 
-<!-- Slot Machine -->
-<div class="slot-machine scroll-reveal">
-  <h3>오늘의 행운 뽑기</h3>
-  <p style="color:#555;font-size:.85rem">하루에 한 번! 어떤 행운이 나올까?</p>
-  <div class="slot-display">
-    <div class="slot-reel">🌙</div>
-    <div class="slot-reel">🍶</div>
-    <div class="slot-reel">🎵</div>
-  </div>
-  <button class="slot-btn" onclick="spinSlot()">뽑기</button>
-  <div class="slot-result"></div>
-</div>
-
-<!-- Reactions -->
-<div class="reactions scroll-reveal">
-  <button class="react-btn" data-emoji="❤️" onclick="react(this,'❤️')">❤️ <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="🔥" onclick="react(this,'🔥')">🔥 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="👏" onclick="react(this,'👏')">👏 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="😮" onclick="react(this,'😮')">😮 <span class="count">0</span></button>
-</div>
-
-<!-- Achievement Badges -->
-<div style="text-align:center;margin:1.5rem 0" class="scroll-reveal">
-  <p style="font-size:.85rem;color:#8B0000;font-weight:700;margin-bottom:.8rem">획득한 배지</p>
-  <div class="badges">
-    <div><div class="badge" data-badge="scroll50">🏃</div><div class="badge-label">탐험가</div></div>
-    <div><div class="badge" data-badge="scroll80">🔍</div><div class="badge-label">몰입자</div></div>
-    <div><div class="badge" data-badge="scroll100">🏆</div><div class="badge-label">정복자</div></div>
-    <div><div class="badge" data-badge="curiosity">🔓</div><div class="badge-label">호기심</div></div>
-    <div><div class="badge" data-badge="slot">🎰</div><div class="badge-label">도전자</div></div>
-    <div><div class="badge" data-badge="react">💛</div><div class="badge-label">공감왕</div></div>
-    <div><div class="badge" data-badge="timegate">⏰</div><div class="badge-label">인내심</div></div>
-  </div>
-</div>
-
-<!-- Auto-Next Countdown -->
-<div class="auto-next scroll-reveal" id="autoNext">
-  <h4>다음 글 자동 이동</h4>
-  <div class="next-timer">15</div>
-  <div class="next-title">드레스코드 확인하기</div>
-  <div class="auto-next-bar"><div class="auto-next-fill" style="width:0%"></div></div>
-</div>
-
-<!-- Exit Intent Popup -->
-<div class="exit-overlay" id="exitOverlay">
-  <div class="exit-popup" style="position:relative">
-    <button class="exit-close" onclick="closeExit()">&times;</button>
-    <h3>잠깐!</h3>
-    <p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p>
-    <a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a>
-  </div>
-</div>
-
 <div class="rec-sec">
-<h3>명월관 가이드 더 보기</h3>
+<h3>같이 보면 좋은 글</h3>
 <a class="rec-card" href="/reservation/" target="_blank" rel="noopener noreferrer"><span>예약</span><p>전화 한 통이면 끝나는 예약 방법</p></a>
 <a class="rec-card" href="/budget/" target="_blank" rel="noopener noreferrer"><span>예산</span><p>코스 가격은 얼마쯤 할까</p></a>
 <a class="rec-card" href="/dresscode/" target="_blank" rel="noopener noreferrer"><span>복장</span><p>뭘 입고 가야 할지 모르겠다면</p></a>

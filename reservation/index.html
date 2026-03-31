@@ -89,21 +89,16 @@
 
 <p>일산명월관요정은 카카오톡 예약? 네이버 예약? 없다. 전화만 된다. 불편하다고? 나도 처음엔 그랬다. 근데 전화가 오히려 빠르다. "이번 주 금요일 저녁 됩니까?" "네, 7시 어떠세요?" 15초면 끝난다. 앱 켜고 날짜 누르고 시간 고르고 하는 것보다 빠르다.</p>
 
-<div class="counter scroll-reveal">
-<div class="counter-num" id="viewCount">0</div>
-<div class="counter-label">오늘 이 글을 본 사람</div>
-</div>
-
 
 <!-- ===== ENGAGEMENT COMPONENTS ===== -->
 
 <!-- Curiosity Gap -->
 <div class="curiosity-gap scroll-reveal">
   <div class="curiosity-blur">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">숨겨진 정보</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">예약 꿀팁</p>
     <p>전화할 때 말투가 중요하다. "혹시 이번 주 금요일 자리 있을까요?" 이렇게 시작해라. 명령조 말고 물어보는 톤. 그러면 신실장이 "몇 분이세요?"부터 시작해서 전부 다 잡아준다. 여기는 전화 한 통에 성의가 드러나는 곳이다.</p>
   </div>
-  <button class="curiosity-unlock" onclick="revealCuriosity(this)">터치해서 확인하기</button>
+  <button class="curiosity-unlock" onclick="revealCuriosity(this)">탭해서 읽기</button>
 </div>
 
 <!-- Time-Gated Content -->
@@ -111,69 +106,16 @@
   <div class="gate-lock">
     <p style="color:#8B0000;font-weight:700">잠긴 콘텐츠</p>
     <span class="countdown">20초</span>
-    <span class="gate-label">기다리면 공개됩니다</span>
+    <span class="gate-label">잠시 후 열립니다</span>
   </div>
   <div class="gate-content">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">공개된 비밀</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">단골이 쓰는 방법</p>
     <p style="color:#555">단골들은 신실장 번호를 즐겨찾기 해놨다. 예약뿐 아니라 "오늘 뭐 좋은 재료 들어왔어요?" 이런 것도 물어본다. 그러면 "오늘 활전복 좋은 거 들어왔습니다" 이런 답이 온다. 정보력이 달라지는 거다.</p>
   </div>
 </div>
 
-<!-- Slot Machine -->
-<div class="slot-machine scroll-reveal">
-  <h3>오늘의 행운 뽑기</h3>
-  <p style="color:#555;font-size:.85rem">하루에 한 번! 어떤 행운이 나올까?</p>
-  <div class="slot-display">
-    <div class="slot-reel">🌙</div>
-    <div class="slot-reel">🍶</div>
-    <div class="slot-reel">🎵</div>
-  </div>
-  <button class="slot-btn" onclick="spinSlot()">뽑기</button>
-  <div class="slot-result"></div>
-</div>
-
-<!-- Reactions -->
-<div class="reactions scroll-reveal">
-  <button class="react-btn" data-emoji="❤️" onclick="react(this,'❤️')">❤️ <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="🔥" onclick="react(this,'🔥')">🔥 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="👏" onclick="react(this,'👏')">👏 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="😮" onclick="react(this,'😮')">😮 <span class="count">0</span></button>
-</div>
-
-<!-- Achievement Badges -->
-<div style="text-align:center;margin:1.5rem 0" class="scroll-reveal">
-  <p style="font-size:.85rem;color:#8B0000;font-weight:700;margin-bottom:.8rem">획득한 배지</p>
-  <div class="badges">
-    <div><div class="badge" data-badge="scroll50">🏃</div><div class="badge-label">탐험가</div></div>
-    <div><div class="badge" data-badge="scroll80">🔍</div><div class="badge-label">몰입자</div></div>
-    <div><div class="badge" data-badge="scroll100">🏆</div><div class="badge-label">정복자</div></div>
-    <div><div class="badge" data-badge="curiosity">🔓</div><div class="badge-label">호기심</div></div>
-    <div><div class="badge" data-badge="slot">🎰</div><div class="badge-label">도전자</div></div>
-    <div><div class="badge" data-badge="react">💛</div><div class="badge-label">공감왕</div></div>
-    <div><div class="badge" data-badge="timegate">⏰</div><div class="badge-label">인내심</div></div>
-  </div>
-</div>
-
-<!-- Auto-Next Countdown -->
-<div class="auto-next scroll-reveal" id="autoNext">
-  <h4>다음 글 자동 이동</h4>
-  <div class="next-timer">15</div>
-  <div class="next-title">코스 요리 미리 보기</div>
-  <div class="auto-next-bar"><div class="auto-next-fill" style="width:0%"></div></div>
-</div>
-
-<!-- Exit Intent Popup -->
-<div class="exit-overlay" id="exitOverlay">
-  <div class="exit-popup" style="position:relative">
-    <button class="exit-close" onclick="closeExit()">&times;</button>
-    <h3>잠깐!</h3>
-    <p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p>
-    <a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a>
-  </div>
-</div>
-
 <div class="rec-sec">
-<h3>명월관 가이드 더 보기</h3>
+<h3>다음으로 확인할 것</h3>
 <a class="rec-card" href="/course/" target="_blank" rel="noopener noreferrer"><span>코스</span><p>뭐가 나오는지 미리 알아두자</p></a>
 <a class="rec-card" href="/budget/" target="_blank" rel="noopener noreferrer"><span>예산</span><p>얼마 들까? 현실적인 이야기</p></a>
 <a class="rec-card" href="/manners/" target="_blank" rel="noopener noreferrer"><span>에티켓</span><p>처음이라 긴장되면 이것만 기억해</p></a>

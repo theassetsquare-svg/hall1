@@ -78,21 +78,16 @@
 <p>일산명월관요정 첫 방문? 10분 일찍 나와라. 골목에서 뺑뺑 도는 시간 포함이다. 두 번째부터는 안 헤맨다. 약속한다.</p>
 </div>
 
-<div class="counter scroll-reveal">
-<div class="counter-num" id="viewCount">0</div>
-<div class="counter-label">오늘 이 글을 본 사람</div>
-</div>
-
 
 <!-- ===== ENGAGEMENT COMPONENTS ===== -->
 
 <!-- Curiosity Gap -->
 <div class="curiosity-gap scroll-reveal">
   <div class="curiosity-blur">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">숨겨진 정보</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">단골만 아는 진입 루트</p>
     <p>단골들만 아는 루트가 있다. 큰길에서 골목 진입할 때 첫 번째 좌회전은 함정이다. 막다른 길이다. 두 번째 좌회전이 정답. 이것만 기억하면 한 번에 들어간다. 네비는 이걸 모른다.</p>
   </div>
-  <button class="curiosity-unlock" onclick="revealCuriosity(this)">터치해서 확인하기</button>
+  <button class="curiosity-unlock" onclick="revealCuriosity(this)">여기를 눌러봐</button>
 </div>
 
 <!-- Time-Gated Content -->
@@ -100,69 +95,16 @@
   <div class="gate-lock">
     <p style="color:#8B0000;font-weight:700">잠긴 콘텐츠</p>
     <span class="countdown">20초</span>
-    <span class="gate-label">기다리면 공개됩니다</span>
+    <span class="gate-label">카운트다운 중</span>
   </div>
   <div class="gate-content">
-    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">공개된 비밀</p>
+    <p style="color:#8B0000;font-weight:700;margin-bottom:.5rem">못 찾겠으면 이렇게</p>
     <p style="color:#555">진짜 못 찾겠으면 전화해라. 신실장이 직접 나온다. 골목 입구까지. 손 흔들면서. 처음 갔을 때 그랬다. 전화하니까 "아, 거기서 기다리세요!" 하더니 1분 만에 나타났다. 이 서비스가 공짜다.</p>
   </div>
 </div>
 
-<!-- Slot Machine -->
-<div class="slot-machine scroll-reveal">
-  <h3>오늘의 행운 뽑기</h3>
-  <p style="color:#555;font-size:.85rem">하루에 한 번! 어떤 행운이 나올까?</p>
-  <div class="slot-display">
-    <div class="slot-reel">🌙</div>
-    <div class="slot-reel">🍶</div>
-    <div class="slot-reel">🎵</div>
-  </div>
-  <button class="slot-btn" onclick="spinSlot()">뽑기</button>
-  <div class="slot-result"></div>
-</div>
-
-<!-- Reactions -->
-<div class="reactions scroll-reveal">
-  <button class="react-btn" data-emoji="❤️" onclick="react(this,'❤️')">❤️ <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="🔥" onclick="react(this,'🔥')">🔥 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="👏" onclick="react(this,'👏')">👏 <span class="count">0</span></button>
-  <button class="react-btn" data-emoji="😮" onclick="react(this,'😮')">😮 <span class="count">0</span></button>
-</div>
-
-<!-- Achievement Badges -->
-<div style="text-align:center;margin:1.5rem 0" class="scroll-reveal">
-  <p style="font-size:.85rem;color:#8B0000;font-weight:700;margin-bottom:.8rem">획득한 배지</p>
-  <div class="badges">
-    <div><div class="badge" data-badge="scroll50">🏃</div><div class="badge-label">탐험가</div></div>
-    <div><div class="badge" data-badge="scroll80">🔍</div><div class="badge-label">몰입자</div></div>
-    <div><div class="badge" data-badge="scroll100">🏆</div><div class="badge-label">정복자</div></div>
-    <div><div class="badge" data-badge="curiosity">🔓</div><div class="badge-label">호기심</div></div>
-    <div><div class="badge" data-badge="slot">🎰</div><div class="badge-label">도전자</div></div>
-    <div><div class="badge" data-badge="react">💛</div><div class="badge-label">공감왕</div></div>
-    <div><div class="badge" data-badge="timegate">⏰</div><div class="badge-label">인내심</div></div>
-  </div>
-</div>
-
-<!-- Auto-Next Countdown -->
-<div class="auto-next scroll-reveal" id="autoNext">
-  <h4>다음 글 자동 이동</h4>
-  <div class="next-timer">15</div>
-  <div class="next-title">예산 가이드 보기</div>
-  <div class="auto-next-bar"><div class="auto-next-fill" style="width:0%"></div></div>
-</div>
-
-<!-- Exit Intent Popup -->
-<div class="exit-overlay" id="exitOverlay">
-  <div class="exit-popup" style="position:relative">
-    <button class="exit-close" onclick="closeExit()">&times;</button>
-    <h3>잠깐!</h3>
-    <p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p>
-    <a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a>
-  </div>
-</div>
-
 <div class="rec-sec">
-<h3>명월관 가이드 더 보기</h3>
+<h3>도착하면 이게 궁금할 거다</h3>
 <a class="rec-card" href="/reservation/" target="_blank" rel="noopener noreferrer"><span>예약</span><p>전화 한 통이면 끝나는 예약 방법</p></a>
 <a class="rec-card" href="/budget/" target="_blank" rel="noopener noreferrer"><span>예산</span><p>얼마쯤 들까? 현실적인 범위</p></a>
 <a class="rec-card" href="/dresscode/" target="_blank" rel="noopener noreferrer"><span>복장</span><p>뭘 입고 가면 될까</p></a>
