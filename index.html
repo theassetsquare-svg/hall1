@@ -320,10 +320,6 @@ function checkQuiz(el,ok){try{var q=el.closest('.quiz-q');if(q.classList.contain
 (function(){try{var d=new Date().toISOString().slice(0,10),k='vc_'+d,c=parseInt(localStorage.getItem(k)||'0')+1;localStorage.setItem(k,c);var base=127+c,el=document.getElementById('viewCount'),t0=performance.now();function ani(now){var p=Math.min((now-t0)/1200,1);el.textContent=Math.floor(base*p)+'명';if(p<1)requestAnimationFrame(ani)}requestAnimationFrame(ani)}catch(e){document.getElementById('viewCount').textContent='128명'}})();
 function shareKakao(){try{if(navigator.share){navigator.share({title:'명월관',text:'처음 가기 전 이것만 알면 된다',url:location.href})}else{window.open('https://story.kakao.com/share?url='+encodeURIComponent(location.href),'_blank','noopener')}}catch(e){}}
 </script>
-<script defer src="/engage.js">
-if(document.getElementById('autoNext')&&typeof initAutoNext==='function'){
-  initAutoNext(document.getElementById('autoNext'),'/reservation/','예약 방법 알아보기',15);
-}
-</script>
+<script defer src="/engage.js"></script>
 </body>
 </html>

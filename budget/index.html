@@ -190,10 +190,6 @@
 (function(){var p=document.getElementById('progress');window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)p.style.width=(window.scrollY/h*100)+'%'},{passive:true})})();
 (function(){try{var d=new Date().toISOString().slice(0,10),k='vc_b_'+d,c=parseInt(localStorage.getItem(k)||'0')+1;localStorage.setItem(k,c);var base=78+c,el=document.getElementById('viewCount'),t0=performance.now();function ani(now){var p=Math.min((now-t0)/1200,1);el.textContent=Math.floor(base*p)+'명';if(p<1)requestAnimationFrame(ani)}requestAnimationFrame(ani)}catch(e){document.getElementById('viewCount').textContent='79명'}})();
 </script>
-<script defer src="/engage.js">
-if(document.getElementById('autoNext')&&typeof initAutoNext==='function'){
-  initAutoNext(document.getElementById('autoNext'),'/manners/','에티켓 알아보기',15);
-}
-</script>
+<script defer src="/engage.js"></script>
 </body>
 </html>

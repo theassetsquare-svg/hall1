@@ -1,7 +1,48 @@
 /* ===== ENGAGEMENT ENGINE — TikTok/Netflix/Slot Machine Psychology ===== */
+/* 빈 화면 방지: 모든 setInterval/setTimeout cleanup + visibilitychange pause + 글로벌 에러 핸들러 */
 (function(){
 'use strict';
 var W=window,D=document,LS=localStorage,PAGE=location.pathname.replace(/\//g,'')||'home';
+
+/* ========== GLOBAL ERROR HANDLER — 빈 화면 방지 ========== */
+W.onerror=function(msg,url,line){
+  try{console.warn('Engage error:',msg,url,line)}catch(e){}
+  return true; /* 에러 삼킴 → 빈 화면 방지 */
+};
+
+/* ========== INTERVAL/TIMEOUT REGISTRY — cleanup 보장 ========== */
+var _intervals=[];
+var _timeouts=[];
+var _paused=false;
+
+function safeInterval(fn,ms){
+  var id=setInterval(function(){if(!_paused)fn()},ms);
+  _intervals.push(id);
+  return id;
+}
+function safeClearInterval(id){
+  clearInterval(id);
+  var idx=_intervals.indexOf(id);
+  if(idx>-1)_intervals.splice(idx,1);
+}
+function safeTimeout(fn,ms){
+  var id=setTimeout(fn,ms);
+  _timeouts.push(id);
+  return id;
+}
+
+/* 탭 비활성 시 전부 일시정지 → 메모리 누수 방지 */
+D.addEventListener('visibilitychange',function(){
+  _paused=D.hidden;
+});
+
+/* 페이지 떠날 때 전부 정리 */
+W.addEventListener('beforeunload',function(){
+  _intervals.forEach(function(id){clearInterval(id)});
+  _timeouts.forEach(function(id){clearTimeout(id)});
+  _intervals=[];
+  _timeouts=[];
+});
 
 /* ========== 1. READING TIMER + Encouragement ========== */
 (function(){
@@ -19,7 +60,7 @@ var W=window,D=document,LS=localStorage,PAGE=location.pathname.replace(/\//g,'')
     {t:900,m:'15분째... 단골 확정'},
     {t:1800,m:'30분! 전문가 수준'}
   ];
-  setInterval(function(){
+  safeInterval(function(){
     sec++;
     var m=Math.floor(sec/60),s=sec%60;
     var ts=D.querySelector('#readTimer .time');
@@ -28,9 +69,11 @@ var W=window,D=document,LS=localStorage,PAGE=location.pathname.replace(/\//g,'')
     for(var i=msgs.length-1;i>=0;i--){
       if(sec>=msgs[i].t){if(ms)ms.textContent=' · '+msgs[i].m;break}
     }
-    // Save total time
-    var tk='total_time_'+new Date().toISOString().slice(0,10);
-    LS.setItem(tk,(parseInt(LS.getItem(tk)||'0')+1).toString());
+    /* 10초마다만 localStorage 저장 (매초 → 과부하 방지) */
+    if(sec%10===0){
+      var tk='total_time_'+new Date().toISOString().slice(0,10);
+      LS.setItem(tk,(parseInt(LS.getItem(tk)||'0')+10).toString());
+    }
   },1000);
 })();
 
@@ -63,19 +106,20 @@ initSecrets();
   var actions=['예약 문의했습니다','글을 읽고 있습니다','전화 연결했습니다','코스 페이지를 봤습니다','공유했습니다','예산 페이지를 확인했습니다'];
   var regions=['서울','일산','파주','김포','고양','분당'];
   function addItem(){
+    var f=D.getElementById('liveFeed');
+    if(!f)return;
     var n=names[Math.floor(Math.random()*names.length)];
     var a=actions[Math.floor(Math.random()*actions.length)];
     var r=regions[Math.floor(Math.random()*regions.length)];
     var ago=Math.floor(Math.random()*5)+1;
     var item=D.createElement('div');item.className='live-item';
     item.innerHTML='<strong>'+r+' '+n.charAt(0)+'**</strong>님이 '+a+' <span style="color:#999;font-size:.7rem">'+ago+'분 전</span>';
-    var f=D.getElementById('liveFeed');
     if(f.children.length>=2)f.removeChild(f.firstChild);
     f.appendChild(item);
-    setTimeout(function(){if(item.parentNode)item.parentNode.removeChild(item)},8000);
+    safeTimeout(function(){if(item.parentNode)item.parentNode.removeChild(item)},8000);
   }
-  setTimeout(addItem,3000);
-  setInterval(addItem,Math.floor(Math.random()*8000)+7000);
+  safeTimeout(addItem,3000);
+  safeInterval(addItem,12000);
 })();
 
 /* ========== 4. CURIOSITY GAP ========== */
@@ -86,15 +130,14 @@ W.revealCuriosity=function(btn){
 
 /* ========== 5. TIME-GATED CONTENT ========== */
 W.initTimeGate=function(el,seconds){
-  var lock=el.querySelector('.gate-lock');
   var cd=el.querySelector('.countdown');
   var remaining=seconds;
   el.classList.add('locked');
-  var iv=setInterval(function(){
+  var iv=safeInterval(function(){
     remaining--;
     if(cd)cd.textContent=remaining+'초';
     if(remaining<=0){
-      clearInterval(iv);
+      safeClearInterval(iv);
       el.classList.remove('locked');
       el.classList.add('unlocked');
       discoverSecret('timegate');
@@ -117,7 +160,7 @@ W.spinSlot=function(){
   var stops=[0,0,0];
   var finalEmojis=[];
   function stopReel(i){
-    setTimeout(function(){
+    safeTimeout(function(){
       var idx=Math.floor(Math.random()*emojis.length);
       stops[i]=idx;
       finalEmojis.push(emojis[idx]);
@@ -133,7 +176,7 @@ W.spinSlot=function(){
         }
         LS.setItem('slot_spun_'+PAGE,'1');
         discoverSecret('slot');
-        setTimeout(function(){btn.disabled=false},2000);
+        safeTimeout(function(){btn.disabled=false},2000);
       }
     },(i+1)*600);
   }
@@ -161,7 +204,7 @@ function initBadges(){
     if(badges[b])el.classList.add('earned');
   });
 }
-setTimeout(initBadges,500);
+safeTimeout(initBadges,500);
 
 /* ========== 8. REACTIONS ========== */
 W.react=function(btn,emoji){
@@ -172,17 +215,16 @@ W.react=function(btn,emoji){
   var c=parseInt(LS.getItem(key)||Math.floor(Math.random()*30+15).toString())+1;
   LS.setItem(key,c.toString());
   if(countEl)countEl.textContent=c;
-  // Floating emoji
   var float=D.createElement('div');float.className='react-float';float.textContent=emoji;
   float.style.left=btn.getBoundingClientRect().left+'px';
   float.style.top=btn.getBoundingClientRect().top+'px';
   D.body.appendChild(float);
-  setTimeout(function(){float.remove()},1000);
+  safeTimeout(function(){float.remove()},1000);
   discoverSecret('react_'+emoji);
   checkBadge('react');
 };
-// Init reaction counts
-setTimeout(function(){
+/* Init reaction counts */
+safeTimeout(function(){
   D.querySelectorAll('.react-btn').forEach(function(btn){
     var emoji=btn.getAttribute('data-emoji');
     var key='react_'+PAGE+'_'+emoji;
@@ -194,7 +236,9 @@ setTimeout(function(){
 },300);
 
 /* ========== 9. AUTO-NEXT COUNTDOWN ========== */
+var _autoNextIv=null;
 W.initAutoNext=function(el,url,title,seconds){
+  if(!el)return;
   var timer=el.querySelector('.next-timer');
   var fill=el.querySelector('.auto-next-fill');
   var total=seconds,remaining=seconds;
@@ -203,13 +247,14 @@ W.initAutoNext=function(el,url,title,seconds){
   el.addEventListener('mouseleave',function(){paused=false});
   el.addEventListener('click',function(){W.location.href=url});
   el.style.cursor='pointer';
-  var iv=setInterval(function(){
+  /* 100ms → 500ms로 변경 (CPU 절약) */
+  _autoNextIv=safeInterval(function(){
     if(paused)return;
-    remaining-=0.1;
+    remaining-=0.5;
     if(timer)timer.textContent=Math.ceil(remaining);
     if(fill)fill.style.width=((total-remaining)/total*100)+'%';
-    if(remaining<=0){clearInterval(iv);W.location.href=url}
-  },100);
+    if(remaining<=0){safeClearInterval(_autoNextIv);W.location.href=url}
+  },500);
 };
 
 /* ========== 10. EXIT INTENT ========== */
@@ -223,12 +268,11 @@ W.initAutoNext=function(el,url,title,seconds){
       if(ov)ov.classList.add('show');
     }
   });
-  // Mobile: back button / tab switch
   D.addEventListener('visibilitychange',function(){
     if(D.hidden&&!shown&&!LS.getItem('exit_shown_'+PAGE)){
       shown=true;
       LS.setItem('exit_shown_'+PAGE,'1');
-      setTimeout(function(){
+      safeTimeout(function(){
         var ov=D.getElementById('exitOverlay');
         if(ov)ov.classList.add('show');
       },500);
@@ -260,7 +304,7 @@ W.initAutoNext=function(el,url,title,seconds){
       if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
     });
   },{threshold:0.15});
-  setTimeout(function(){
+  safeTimeout(function(){
     D.querySelectorAll('.scroll-reveal').forEach(function(el){obs.observe(el)});
   },200);
 })();
@@ -274,11 +318,11 @@ W.initAutoNext=function(el,url,title,seconds){
     LS.setItem(key,JSON.stringify(visited));
   }
   if(visited.length>=2){
-    setTimeout(function(){
+    safeTimeout(function(){
       var toast=D.createElement('div');toast.className='streak-toast';
       toast.textContent='연속 '+visited.length+'페이지 읽는 중!';
       D.body.appendChild(toast);
-      setTimeout(function(){toast.remove()},2500);
+      safeTimeout(function(){toast.remove()},2500);
     },2000);
   }
 })();
@@ -287,15 +331,37 @@ W.initAutoNext=function(el,url,title,seconds){
 function showToast(msg){
   var t=D.createElement('div');t.className='toast';t.textContent=msg;
   D.body.appendChild(t);
-  setTimeout(function(){t.remove()},3500);
+  safeTimeout(function(){t.remove()},3500);
 }
 
 /* ========== INIT TIME GATES on page ========== */
-setTimeout(function(){
+safeTimeout(function(){
   D.querySelectorAll('.time-gate').forEach(function(el){
     var sec=parseInt(el.getAttribute('data-seconds')||'30');
     W.initTimeGate(el,sec);
   });
 },500);
+
+/* ========== INIT AUTO-NEXT on page ========== */
+safeTimeout(function(){
+  var el=D.getElementById('autoNext');
+  if(!el)return;
+  var nextTitle=el.querySelector('.next-title');
+  if(!nextTitle)return;
+  var text=nextTitle.textContent;
+  /* 페이지별 자동 이동 설정 */
+  var routes={
+    'home':{url:'/reservation/',title:'예약 방법 알아보기'},
+    'reservation':{url:'/course/',title:'코스 요리 미리 보기'},
+    'course':{url:'/dresscode/',title:'드레스코드 확인하기'},
+    'dresscode':{url:'/parking/',title:'주차 방법 알아보기'},
+    'parking':{url:'/budget/',title:'예산 가이드 보기'},
+    'budget':{url:'/manners/',title:'에티켓 알아보기'},
+    'manners':{url:'/compare/',title:'비교 가이드 보기'},
+    'compare':{url:'/','title':'메인으로 돌아가기'}
+  };
+  var route=routes[PAGE];
+  if(route)W.initAutoNext(el,route.url,route.title,15);
+},600);
 
 })();
