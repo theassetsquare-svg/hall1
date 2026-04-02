@@ -342,7 +342,115 @@ safeTimeout(function(){
   });
 },500);
 
-/* ========== 14. DYNAMIC COMPONENT INJECTION (유사도 감소) ========== */
+/* ========== 14. SOCIAL PROOF — 이번 달 N명 ========== */
+(function(){
+  var mk='monthly_'+new Date().toISOString().slice(0,7)+'_'+PAGE;
+  var c=parseInt(LS.getItem(mk)||'0')+1;LS.setItem(mk,c.toString());
+  var base=847+c*3;
+  var el=D.createElement('div');el.className='social-proof';
+  el.innerHTML='이번 달 <strong>'+base+'명</strong>이 이 글을 읽었습니다';
+  var wrap=D.querySelector('.content-area')||D.querySelector('.wrap');
+  if(wrap)wrap.insertBefore(el,wrap.firstChild);
+})();
+
+/* ========== 15. WEEKEND COUNTDOWN — 긴급감 ========== */
+(function(){
+  var day=new Date().getDay();
+  var until=(6-day+7)%7;if(until===0)until=7;
+  var spots=2+Math.floor(Math.random()*3);
+  var el=D.createElement('div');el.className='countdown-urgency scroll-reveal';
+  var dayNames=['일','월','화','수','목','금','토'];
+  var label=until<=2?'이번 주말':'이번 주 토요일';
+  el.innerHTML='<span class="urgency-pulse"></span> '+label+' 예약 마감 <strong>'+spots+'자리</strong> 남음';
+  var content=D.querySelector('.content-area');
+  if(content){var fp=content.querySelector('p');if(fp&&fp.nextSibling)fp.parentNode.insertBefore(el,fp.nextSibling)}
+})();
+
+/* ========== 16. GALLERY — 낮 vs 밤 비교 스와이프 ========== */
+(function(){
+  var imgs=[
+    {src:'/images/thumb-main.webp',cap:'명월관 전경'},
+    {src:'/images/thumb-reservation.webp',cap:'예약 안내'},
+    {src:'/images/thumb-course.webp',cap:'코스 요리'},
+    {src:'/images/thumb-dresscode.webp',cap:'드레스코드'},
+    {src:'/images/thumb-parking.webp',cap:'주차·교통'},
+    {src:'/images/thumb-budget.webp',cap:'예산 가이드'}
+  ];
+  var el=D.createElement('div');el.className='gallery-compare scroll-reveal';
+  var inner='<h3>명월관 한눈에 보기</h3><div class="gallery-track">';
+  imgs.forEach(function(img){
+    inner+='<div class="gallery-slide"><img src="'+img.src+'" alt="일산명월관요정 '+img.cap+'" loading="lazy" width="600" height="600"><div class="gallery-cap">'+img.cap+'</div></div>';
+  });
+  inner+='</div><div class="gallery-dots">';
+  imgs.forEach(function(_,i){inner+='<span class="gallery-dot'+(i===0?' active':'')+'"></span>'});
+  inner+='</div><p class="gallery-hint">← 스와이프해서 더 보기 →</p>';
+  el.innerHTML=inner;
+  var recSec=D.querySelector('.rec-sec');
+  if(recSec)recSec.parentNode.insertBefore(el,recSec);
+  /* Touch swipe */
+  safeTimeout(function(){
+    var track=el.querySelector('.gallery-track');
+    var dots=el.querySelectorAll('.gallery-dot');
+    if(!track)return;
+    var startX=0,scrollLeft=0;
+    track.addEventListener('touchstart',function(e){startX=e.touches[0].pageX;scrollLeft=track.scrollLeft},{passive:true});
+    track.addEventListener('touchmove',function(e){track.scrollLeft=scrollLeft-(e.touches[0].pageX-startX)},{passive:true});
+    track.addEventListener('scroll',function(){
+      var idx=Math.round(track.scrollLeft/(track.scrollWidth/imgs.length));
+      dots.forEach(function(d,i){d.classList.toggle('active',i===idx)});
+    },{passive:true});
+  },500);
+})();
+
+/* ========== 17. MINI QUIZ — 밤문화 유형 ========== */
+(function(){
+  var qs=[
+    {q:'금요일 저녁, 어디로?',a:['조용한 한정식','시끌벅적 호프','분위기 있는 바'],t:['정','동','감']},
+    {q:'동행은 누구?',a:['비즈니스 파트너','오랜 친구','특별한 사람'],t:['정','동','감']},
+    {q:'가장 중요한 건?',a:['음식 퀄리티','가격 대비 양','분위기와 서비스'],t:['정','동','감']}
+  ];
+  var types={
+    '정':{name:'전통 미식가',desc:'당신은 공간과 음식의 격을 아는 사람. 명월관이 딱 맞습니다.'},
+    '동':{name:'에너지 충전형',desc:'활기찬 자리를 좋아하는 당신. 명월관의 라이브 공연이 기다립니다.'},
+    '감':{name:'분위기 감성파',desc:'공간의 감성을 중시하는 당신. 명월관 정원과 가야금이 답입니다.'}
+  };
+  var el=D.createElement('div');el.className='mini-quiz scroll-reveal';el.id='miniQuiz';
+  var html='<h3>당신에게 맞는 밤문화 유형은?</h3><p class="quiz-sub">3문항이면 끝!</p>';
+  qs.forEach(function(q,qi){
+    html+='<div class="mq-q" data-qi="'+qi+'"><p class="mq-label">Q'+(qi+1)+'. '+q.q+'</p>';
+    q.a.forEach(function(a,ai){
+      html+='<button class="mq-opt" data-type="'+q.t[ai]+'" onclick="mqAnswer(this,'+qi+')">'+a+'</button>';
+    });
+    html+='</div>';
+  });
+  html+='<div class="mq-result" id="mqResult"></div>';
+  el.innerHTML=html;
+  var curiosity=D.querySelector('.curiosity-gap');
+  if(curiosity)curiosity.parentNode.insertBefore(el,curiosity);
+  var answers=[];
+  W.mqAnswer=function(btn,qi){
+    var qDiv=btn.closest('.mq-q');
+    if(qDiv.classList.contains('done'))return;
+    qDiv.classList.add('done');
+    btn.classList.add('selected');
+    answers.push(btn.getAttribute('data-type'));
+    if(answers.length===3){
+      var counts={'정':0,'동':0,'감':0};
+      answers.forEach(function(a){counts[a]++});
+      var best=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]})[0];
+      var r=types[best];
+      var res=D.getElementById('mqResult');
+      if(res){
+        res.innerHTML='<div class="mq-type">'+r.name+'</div><p>'+r.desc+'</p>';
+        res.classList.add('show');
+      }
+      checkBadge('quiz');
+      discoverSecret('quiz');
+    }
+  };
+})();
+
+/* ========== 18. DYNAMIC COMPONENT INJECTION (유사도 감소) ========== */
 /* 슬롯/배지/리액션/자동이동/이탈팝업/카운터를 JS에서 생성 → HTML 유사도 대폭 감소 */
 (function(){
   var wrap=D.querySelector('.content-area .wrap')||D.querySelector('.wrap.content-area')||D.querySelector('.wrap');
@@ -388,7 +496,7 @@ safeTimeout(function(){
 
   /* Exit Intent Popup */
   var ex=D.createElement('div');ex.className='exit-overlay';ex.id='exitOverlay';
-  ex.innerHTML='<div class="exit-popup" style="position:relative"><button class="exit-close" onclick="closeExit()">&times;</button><h3>잠깐!</h3><p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p><a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a></div>';
+  ex.innerHTML='<div class="exit-popup" style="position:relative"><button class="exit-close" onclick="closeExit()">&times;</button><h3>잠깐! 이것만 보고 가세요</h3><p>아직 못 본 비밀 콘텐츠가 남아있어요.<br>80% 스크롤하면 숨겨진 이야기가 열립니다.</p><a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a></div>';
   D.body.appendChild(ex);
 
   /* Insert into content area */
