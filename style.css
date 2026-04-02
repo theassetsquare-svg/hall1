@@ -1,5 +1,5 @@
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',sans-serif;font-size:16px;background:#F5F5F5;color:#111;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:-apple-system,'Malgun Gothic','맑은 고딕',sans-serif;font-size:16px;background:#F5F5F5;color:#111;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 #progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#8B0000,#C9A96E);z-index:9999;transition:width .15s}
 a{color:#8B0000;text-decoration:none}
 a:hover{text-decoration:underline}
@@ -22,14 +22,15 @@ a:hover{text-decoration:underline}
 .card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-2px)}
 .card h2{font-size:1.15rem;color:#111;margin-bottom:.5rem;font-weight:700}
 .card h3{font-size:1.05rem;color:#111;margin-bottom:.5rem;font-weight:700}
-.card p{color:#555;font-size:1rem;line-height:1.6}
+.card p{color:#555;font-size:1rem;line-height:1.7}
 .card-link{display:block;text-decoration:none;color:inherit}
 .card-link:hover{text-decoration:none}
 .card-link .card-arrow{color:#8B0000;font-size:.9rem;margin-top:.8rem;font-weight:600}
 /* 콘텐츠 */
 .content-area{padding:1.5rem 0 4rem}
 .content-area h2{font-size:1.2rem;color:#8B0000;margin:2rem 0 1rem;font-weight:800;padding-left:.5rem;border-left:3px solid #8B0000}
-.content-area p{color:#111;font-size:1rem;margin-bottom:1.2rem;line-height:1.6}
+.content-area p{color:#111;font-size:1rem;margin-bottom:1.2rem;line-height:1.7}
+.content-img{width:100%;height:auto;border-radius:12px;display:block;margin:1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .content-area p.sub{color:#555}
 .accent-text{color:#8B0000;font-weight:700}
 .tag{display:inline-block;background:#FFF5F5;color:#8B0000;font-size:.78rem;padding:.2rem .6rem;border-radius:20px;font-weight:600;margin-right:.3rem;margin-bottom:.3rem}
