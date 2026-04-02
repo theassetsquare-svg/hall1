@@ -245,7 +245,7 @@ W.initAutoNext=function(el,url,title,seconds){
   var paused=false;
   el.addEventListener('mouseenter',function(){paused=true});
   el.addEventListener('mouseleave',function(){paused=false});
-  el.addEventListener('click',function(){W.location.href=url});
+  el.addEventListener('click',function(){W.open(url,'_blank','noopener')});
   el.style.cursor='pointer';
   /* 100ms → 500ms로 변경 (CPU 절약) */
   _autoNextIv=safeInterval(function(){
@@ -253,7 +253,7 @@ W.initAutoNext=function(el,url,title,seconds){
     remaining-=0.5;
     if(timer)timer.textContent=Math.ceil(remaining);
     if(fill)fill.style.width=((total-remaining)/total*100)+'%';
-    if(remaining<=0){safeClearInterval(_autoNextIv);W.location.href=url}
+    if(remaining<=0){safeClearInterval(_autoNextIv);W.open(url,'_blank','noopener')}
   },500);
 };
 
@@ -496,7 +496,7 @@ safeTimeout(function(){
 
   /* Exit Intent Popup */
   var ex=D.createElement('div');ex.className='exit-overlay';ex.id='exitOverlay';
-  ex.innerHTML='<div class="exit-popup" style="position:relative"><button class="exit-close" onclick="closeExit()">&times;</button><h3>잠깐! 이것만 보고 가세요</h3><p>아직 못 본 비밀 콘텐츠가 남아있어요.<br>80% 스크롤하면 숨겨진 이야기가 열립니다.</p><a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a></div>';
+  ex.innerHTML='<div class="exit-popup" style="position:relative"><button class="exit-close" onclick="closeExit()">&times;</button><h3>잠깐! 이것만 보고 가세요</h3><p>아직 못 본 비밀 콘텐츠가 남아있어요.<br>80% 스크롤하면 숨겨진 이야기가 열립니다.</p><a class="exit-cta" href="tel:010-3695-4929" target="_blank" rel="noopener noreferrer">신실장에게 바로 전화</a></div>';
   D.body.appendChild(ex);
 
   /* Insert into content area */
