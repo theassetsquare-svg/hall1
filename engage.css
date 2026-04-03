@@ -63,13 +63,7 @@
 .react-float{position:fixed;pointer-events:none;font-size:1.5rem;z-index:9999;animation:floatUp 1s ease forwards}
 @keyframes floatUp{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
 
-/* Auto-Next Countdown */
-.auto-next{background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);padding:1.5rem;margin:2rem 0;text-align:center;border:1px solid #eee}
-.auto-next h4{color:#8B0000;margin-bottom:.5rem;font-size:1rem}
-.auto-next .next-timer{font-size:2.5rem;font-weight:800;color:#C9A96E}
-.auto-next .next-title{color:#555;font-size:.9rem;margin-top:.3rem}
-.auto-next-bar{height:3px;background:#eee;border-radius:2px;margin-top:.8rem;overflow:hidden}
-.auto-next-fill{height:100%;background:linear-gradient(90deg,#8B0000,#C9A96E);transition:width .1s linear}
+/* Auto-Next 제거됨 — NEVER auto page transition */
 
 /* Exit Intent Popup */
 .exit-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99999;align-items:center;justify-content:center;backdrop-filter:blur(4px)}

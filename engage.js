@@ -235,27 +235,8 @@ safeTimeout(function(){
   });
 },300);
 
-/* ========== 9. AUTO-NEXT COUNTDOWN ========== */
-var _autoNextIv=null;
-W.initAutoNext=function(el,url,title,seconds){
-  if(!el)return;
-  var timer=el.querySelector('.next-timer');
-  var fill=el.querySelector('.auto-next-fill');
-  var total=seconds,remaining=seconds;
-  var paused=false;
-  el.addEventListener('mouseenter',function(){paused=true});
-  el.addEventListener('mouseleave',function(){paused=false});
-  el.addEventListener('click',function(){W.open(url,'_blank','noopener')});
-  el.style.cursor='pointer';
-  /* 100ms → 500ms로 변경 (CPU 절약) */
-  _autoNextIv=safeInterval(function(){
-    if(paused)return;
-    remaining-=0.5;
-    if(timer)timer.textContent=Math.ceil(remaining);
-    if(fill)fill.style.width=((total-remaining)/total*100)+'%';
-    if(remaining<=0){safeClearInterval(_autoNextIv);W.open(url,'_blank','noopener')}
-  },500);
-};
+/* ========== 9. NEXT PAGE CTA (자동 전환 제거) ========== */
+/* Auto page transition은 NEVER 규칙 위반 → 수동 링크만 표시 */
 
 /* ========== 10. EXIT INTENT ========== */
 (function(){
@@ -476,23 +457,7 @@ safeTimeout(function(){
   badgeWrap.innerHTML='<p style="font-size:.85rem;color:#8B0000;font-weight:700;margin-bottom:.8rem">획득한 배지</p><div class="badges"><div><div class="badge" data-badge="scroll50">🏃</div><div class="badge-label">탐험가</div></div><div><div class="badge" data-badge="scroll80">🔍</div><div class="badge-label">몰입자</div></div><div><div class="badge" data-badge="scroll100">🏆</div><div class="badge-label">정복자</div></div><div><div class="badge" data-badge="curiosity">🔓</div><div class="badge-label">호기심</div></div><div><div class="badge" data-badge="slot">🎰</div><div class="badge-label">도전자</div></div><div><div class="badge" data-badge="react">💛</div><div class="badge-label">공감왕</div></div><div><div class="badge" data-badge="timegate">⏰</div><div class="badge-label">인내심</div></div></div>';
   frag.appendChild(badgeWrap);
 
-  /* Auto-Next */
-  var routes={
-    'home':{url:'/reservation/',t:'예약 방법 알아보기'},
-    'reservation':{url:'/course/',t:'코스 요리 미리 보기'},
-    'course':{url:'/dresscode/',t:'드레스코드 확인하기'},
-    'dresscode':{url:'/parking/',t:'주차 방법 알아보기'},
-    'parking':{url:'/budget/',t:'예산 가이드 보기'},
-    'budget':{url:'/manners/',t:'에티켓 알아보기'},
-    'manners':{url:'/compare/',t:'비교 가이드 보기'},
-    'compare':{url:'/',t:'메인으로 돌아가기'}
-  };
-  var route=routes[PAGE];
-  if(route){
-    var an=D.createElement('div');an.className='auto-next scroll-reveal';an.id='autoNext';
-    an.innerHTML='<h4>다음 글 자동 이동</h4><div class="next-timer">15</div><div class="next-title">'+route.t+'</div><div class="auto-next-bar"><div class="auto-next-fill" style="width:0%"></div></div>';
-    frag.appendChild(an);
-  }
+  /* Auto-Next 제거됨 — NEVER auto page transition */
 
   /* Exit Intent Popup */
   var ex=D.createElement('div');ex.className='exit-overlay';ex.id='exitOverlay';
@@ -518,9 +483,7 @@ safeTimeout(function(){
       if(countEl)countEl.textContent=c;
       if(LS.getItem('reacted_'+key))btn.classList.add('active');
     });
-    /* Init auto-next */
-    var anEl=D.getElementById('autoNext');
-    if(anEl&&route)W.initAutoNext(anEl,route.url,route.t,15);
+    /* Auto-next 제거됨 */
     /* Observe new scroll-reveal elements */
     var obs=new IntersectionObserver(function(entries){
       entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
