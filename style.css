@@ -99,3 +99,16 @@ footer a{color:#8B0000}
 /* 브레드크럼 */
 .breadcrumb{padding:.8rem 0;font-size:.82rem;color:#555}
 .breadcrumb a{color:#8B0000}
+/* Pull Quote — 매거진 스타일 */
+.pull-quote{margin:2rem 0;padding:1.5rem 1.2rem;border-left:4px solid #C9A96E;background:#FFF9F5;font-size:clamp(1.15rem,3.5vw,1.5rem);font-style:italic;color:#8B0000;line-height:1.6;font-weight:600;letter-spacing:-.01em;position:relative}
+.pull-quote::before{content:'\201C';position:absolute;top:-.2rem;left:.5rem;font-size:3rem;color:#C9A96E;opacity:.3;font-style:normal}
+/* Photo with caption — 매거진 산재 */
+.photo-inline{margin:1.5rem 0;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.photo-inline img{width:100%;height:auto;display:block}
+.photo-inline .photo-cap{text-align:center;font-size:.82rem;color:#555;padding:.6rem 1rem;background:#fff}
+/* Mid-content CTA — 40% 위치 */
+.mid-cta{display:block;max-width:100%;margin:2rem auto;padding:1rem;background:#7C3AED;color:#fff;border-radius:16px;text-align:center;font-size:1.05rem;font-weight:800;text-decoration:none;min-height:56px;line-height:1.4;transition:all .2s;box-shadow:0 4px 16px rgba(124,58,237,.3)}
+.mid-cta:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(124,58,237,.4);text-decoration:none;color:#fff}
+/* Social count top */
+.view-count-top{text-align:center;padding:.6rem 1rem;font-size:.88rem;color:#555;margin-bottom:.5rem}
+.view-count-top strong{color:#8B0000;font-weight:800;font-size:1rem}
