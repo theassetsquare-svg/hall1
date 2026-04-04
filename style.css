@@ -88,6 +88,7 @@ a:hover{text-decoration:underline}
 .tip-box strong{color:#8B0000}
 .tip-box p{color:#555;font-size:.9rem}
 /* 푸터 */
+main{display:block}
 footer{text-align:center;padding:2rem 1rem 7rem;border-top:1px solid #eee;background:#fff;margin-top:2rem}
 footer p{color:#555;font-size:.82rem;margin-bottom:.5rem}
 footer a{color:#8B0000}
