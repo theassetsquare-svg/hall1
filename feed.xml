@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+  <title>일산명월관요정 — 한정식·가야금·룸식당 가이드</title>
+  <link>https://hall1.pages.dev/</link>
+  <description>일산명월관요정 첫 방문 가이드. 예약·코스·드레스코드·주차·예산·에티켓·비교 정리. 일산명월관, 일산요정 검색 1순위.</description>
+  <language>ko-KR</language>
+  <atom:link href="https://hall1.pages.dev/feed.xml" rel="self" type="application/rss+xml" />
+  <lastBuildDate>Tue, 19 May 2026 09:00:00 +0900</lastBuildDate>
+  <pubDate>Wed, 01 Apr 2026 09:00:00 +0900</pubDate>
+  <ttl>1440</ttl>
+  <image>
+    <url>https://hall1.pages.dev/images/og-main.webp</url>
+    <title>일산명월관요정</title>
+    <link>https://hall1.pages.dev/</link>
+  </image>
+
+  <item>
+    <title>일산명월관요정 — 한 번 가면 계속 생각난다, 그런 곳이다</title>
+    <link>https://hall1.pages.dev/</link>
+    <guid isPermaLink="true">https://hall1.pages.dev/</guid>
+    <description>일산명월관요정 첫 방문 가이드. 가야금 라이브, 한정식 풀코스, 예약·코스·주차까지 정리. 일산요정 중 신실장이 직접 응대.</description>
+    <dc:creator>신실장</dc:creator>
+    <pubDate>Wed, 01 Apr 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>일산명월관요정 예약 — 손이 떨렸다, 근데 전화 한 통이면 끝이었다</title>
+    <link>https://hall1.pages.dev/reservation/</link>
+    <guid isPermaLink="true">https://hall1.pages.dev/reservation/</guid>
+    <description>일산명월관 예약 전화 골든타임, 인원·자리 성격 응대, 단체 예약 노하우.</description>
+    <dc:creator>신실장</dc:creator>
+    <pubDate>Wed, 01 Apr 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>일산명월관요정 코스 — 첫 숟가락에 와 소리가 나왔다</title>
+    <link>https://hall1.pages.dev/course/</link>
+    <guid isPermaLink="true">https://hall1.pages.dev/course/</guid>
+    <description>일산요정 한정식 풀코스 열다섯 접시. 알레르기·채식·주안상 옵션 정리.</description>
+    <dc:creator>신실장</dc:creator>
+    <pubDate>Wed, 01 Apr 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>일산명월관요정 드레스코드 — 옷장 앞에서 30분 서 있었다</title>
+    <link>https://hall1.pages.dev/dresscode/</link>
+    <guid isPermaLink="true">https://hall1.pages.dev/dresscode/</guid>
+    <description>일산명월관 드레스코드. 셔츠·면바지·양말 필수. 계절별 옷 정리.</description>
+    <dc:creator>신실장</dc:creator>
+    <pubDate>Wed, 01 Apr 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>일산명월관요정 주차·교통 — 네비가 세 번 포기했다</title>
+    <link>https://hall1.pages.dev/parking/</link>
+    <guid isPermaLink="true">https://hall1.pages.dev/parking/</guid>
+    <description>일산요정 골목 진입 루트, 자유로 시간대, 대리운전 호출 노하우.</description>
+    <dc:creator>신실장</dc:creator>
+    <pubDate>Wed, 01 Apr 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>일산명월관요정 예산 — 강남 고깃집보다 싸다</title>
+    <link>https://hall1.pages.dev/budget/</link>
+    <guid isPermaLink="true">https://hall1.pages.dev/budget/</guid>
+    <description>일산명월관 1인 예산, 주류, 카드결제, 법인 영수증 처리.</description>
+    <dc:creator>신실장</dc:creator>
+    <pubDate>Wed, 01 Apr 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>일산명월관요정 에티켓 — 첫 방문 전날 밤 이불 속에서 검색했다</title>
+    <link>https://hall1.pages.dev/manners/</link>
+    <guid isPermaLink="true">https://hall1.pages.dev/manners/</guid>
+    <description>일산요정 좌석·술잔·사진·인사 매너. 첫 방문 어색함 푸는 팁.</description>
+    <dc:creator>신실장</dc:creator>
+    <pubDate>Wed, 01 Apr 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>일산명월관요정 비교 — 세 군데 내 돈 내고 가봤다</title>
+    <link>https://hall1.pages.dev/compare/</link>
+    <guid isPermaLink="true">https://hall1.pages.dev/compare/</guid>
+    <description>일산요정 3곳 직접 비교. 분위기·음식·서비스·주차 솔직 평가.</description>
+    <dc:creator>신실장</dc:creator>
+    <pubDate>Wed, 01 Apr 2026 09:00:00 +0900</pubDate>
+  </item>
+</channel>
+</rss>
