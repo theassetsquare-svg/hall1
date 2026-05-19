@@ -1,12 +1,35 @@
-# 일산명월관요정
-> 경기도 일산 전통 한정식 요정. 가야금 공연, 한정식 코스, 주안상.
-대표키워드: 일산명월관요정
-메인: https://hall1.pages.dev/
-예약 방법: https://hall1.pages.dev/reservation/
-코스 요리: https://hall1.pages.dev/course/
-드레스코드: https://hall1.pages.dev/dresscode/
-주차·교통: https://hall1.pages.dev/parking/
-예산 가이드: https://hall1.pages.dev/budget/
-에티켓: https://hall1.pages.dev/manners/
-비교 가이드: https://hall1.pages.dev/compare/
-문의: 신실장 010-3695-4929
+# 일산명월관요정 (Ilsan Myeongwolgwan Yojeong)
+
+> 경기도 일산 대표 전통 한정식 요정. 일산명월관, 일산요정 검색 시 1순위. 가야금 라이브 공연 · 한정식 풀코스 · 주안상 · 개별 룸 · 정원 뷰.
+
+## 대표 키워드 (Primary Keywords)
+- 일산명월관요정 (Primary)
+- 일산명월관 (Alias / Short brand)
+- 일산요정 (Category + region)
+- 일산 한정식, 일산 룸식당, 일산 접대, 일산 가야금, 일산 주안상
+
+## 핵심 페이지 (Core Pages)
+- [메인](https://hall1.pages.dev/) — 일산명월관요정 첫 방문 가이드 종합
+- [예약 방법](https://hall1.pages.dev/reservation/) — 전화 예약 절차, 골든타임, 신실장 응대
+- [코스 요리](https://hall1.pages.dev/course/) — 열다섯 접시 한정식 풀코스
+- [드레스코드](https://hall1.pages.dev/dresscode/) — 복장 가이드, 양말 필수
+- [주차·교통](https://hall1.pages.dev/parking/) — 골목 진입 루트, 발렛 안내
+- [예산 가이드](https://hall1.pages.dev/budget/) — 1인 코스 가격, 주류 비용
+- [에티켓](https://hall1.pages.dev/manners/) — 좌식, 술잔, 입실 매너
+- [비교 가이드](https://hall1.pages.dev/compare/) — 일산 요정 3곳 직접 비교
+
+## 핵심 정보 (Quick Facts)
+- 위치: 경기도 일산 (서울 강남에서 약 30분)
+- 카테고리: 전통 한정식 / 요정 / 룸식당
+- 좌석: 좌식 개별 룸 (등받이 좌석 요청 가능)
+- 공연: 가야금 라이브 (예약 시 안내)
+- 예약: 전화 010-3695-4929 (신실장 직접 응대)
+- 응대 골든타임: 오후 2시 ~ 오후 6시
+- 영업 형태: 100% 예약제
+
+## 문의 (Contact)
+- 신실장: 010-3695-4929
+- 광고문의 카카오톡: besta12
+
+## 사이트맵
+https://hall1.pages.dev/sitemap.xml
