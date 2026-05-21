@@ -27,11 +27,12 @@ jobs:
       - name: Validate JSON-LD blocks in every HTML page
         run: |
           node --input-type=module <<'NODE'
-          import { readFileSync, readdirSync, statSync } from 'node:fs';
-          import { resolve, join } from 'node:path';
+          import { readFileSync } from 'node:fs';
+          import { resolve } from 'node:path';
 
           const ROOT = process.cwd();
-          const PAGES = [
+          // 8 main pages require Schema. 404.html does not.
+          const REQUIRED_PAGES = [
             'index.html',
             'reservation/index.html',
             'course/index.html',
@@ -40,24 +41,29 @@ jobs:
             'budget/index.html',
             'manners/index.html',
             'compare/index.html',
-            '404.html',
           ];
-
-          const REQUIRED_TYPES_HOME = ['Restaurant','LocalBusiness','NightClub','BarOrPub'];
-          const REQUIRED_TYPES_SUB = ['Restaurant','LocalBusiness','NightClub','BarOrPub'];
+          const OPTIONAL_PAGES = ['404.html'];
+          const REQUIRED_TYPES = ['Restaurant','LocalBusiness','NightClub','BarOrPub'];
 
           let failed = 0;
-          for (const rel of PAGES) {
+
+          const validate = (rel, requireTypes) => {
             const path = resolve(ROOT, rel);
             let html;
             try { html = readFileSync(path, 'utf8'); }
-            catch { console.log(`SKIP missing: ${rel}`); continue; }
+            catch { console.log(`SKIP missing: ${rel}`); return; }
 
             const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
             if (blocks.length === 0) {
-              console.error(`FAIL ${rel}: no JSON-LD found`);
-              failed++; continue;
+              if (requireTypes) {
+                console.error(`FAIL ${rel}: no JSON-LD found`);
+                failed++;
+              } else {
+                console.log(`OK   ${rel}: (no JSON-LD, not required)`);
+              }
+              return;
             }
+
             const allTypes = new Set();
             for (const b of blocks) {
               try {
@@ -79,15 +85,21 @@ jobs:
                 failed++;
               }
             }
-            const required = rel === '404.html' ? [] : (rel === 'index.html' ? REQUIRED_TYPES_HOME : REQUIRED_TYPES_SUB);
-            const missing = required.filter(t => !allTypes.has(t));
-            if (missing.length) {
-              console.error(`FAIL ${rel}: missing types: ${missing.join(', ')}`);
-              failed++;
-            } else {
-              console.log(`OK   ${rel}: types = ${[...allTypes].join(', ')}`);
+
+            if (requireTypes) {
+              const missing = REQUIRED_TYPES.filter(t => !allTypes.has(t));
+              if (missing.length) {
+                console.error(`FAIL ${rel}: missing types: ${missing.join(', ')}`);
+                failed++;
+                return;
+              }
             }
-          }
+            console.log(`OK   ${rel}: types = ${[...allTypes].join(', ')}`);
+          };
+
+          for (const rel of REQUIRED_PAGES) validate(rel, true);
+          for (const rel of OPTIONAL_PAGES) validate(rel, false);
+
           if (failed) { console.error(`\n${failed} failure(s)`); process.exit(1); }
           console.log('\nAll JSON-LD blocks valid.');
           NODE
