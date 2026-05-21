@@ -1,0 +1,93 @@
+name: Schema.org JSON-LD validate (8 pages)
+
+on:
+  schedule:
+    # KST 13:00 = UTC 04:00
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - '.github/workflows/schema-validate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate JSON-LD blocks in every HTML page
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync, readdirSync, statSync } from 'node:fs';
+          import { resolve, join } from 'node:path';
+
+          const ROOT = process.cwd();
+          const PAGES = [
+            'index.html',
+            'reservation/index.html',
+            'course/index.html',
+            'dresscode/index.html',
+            'parking/index.html',
+            'budget/index.html',
+            'manners/index.html',
+            'compare/index.html',
+            '404.html',
+          ];
+
+          const REQUIRED_TYPES_HOME = ['Restaurant','LocalBusiness','NightClub','BarOrPub'];
+          const REQUIRED_TYPES_SUB = ['Restaurant','LocalBusiness','NightClub','BarOrPub'];
+
+          let failed = 0;
+          for (const rel of PAGES) {
+            const path = resolve(ROOT, rel);
+            let html;
+            try { html = readFileSync(path, 'utf8'); }
+            catch { console.log(`SKIP missing: ${rel}`); continue; }
+
+            const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+            if (blocks.length === 0) {
+              console.error(`FAIL ${rel}: no JSON-LD found`);
+              failed++; continue;
+            }
+            const allTypes = new Set();
+            for (const b of blocks) {
+              try {
+                const json = JSON.parse(b[1].trim());
+                const visit = (n) => {
+                  if (Array.isArray(n)) return n.forEach(visit);
+                  if (n && typeof n === 'object') {
+                    if (n['@type']) {
+                      const t = Array.isArray(n['@type']) ? n['@type'] : [n['@type']];
+                      t.forEach(x => allTypes.add(x));
+                    }
+                    if (n['@graph']) visit(n['@graph']);
+                    if (n.mainEntity) visit(n.mainEntity);
+                  }
+                };
+                visit(json);
+              } catch (e) {
+                console.error(`FAIL ${rel}: JSON parse error: ${e.message}`);
+                failed++;
+              }
+            }
+            const required = rel === '404.html' ? [] : (rel === 'index.html' ? REQUIRED_TYPES_HOME : REQUIRED_TYPES_SUB);
+            const missing = required.filter(t => !allTypes.has(t));
+            if (missing.length) {
+              console.error(`FAIL ${rel}: missing types: ${missing.join(', ')}`);
+              failed++;
+            } else {
+              console.log(`OK   ${rel}: types = ${[...allTypes].join(', ')}`);
+            }
+          }
+          if (failed) { console.error(`\n${failed} failure(s)`); process.exit(1); }
+          console.log('\nAll JSON-LD blocks valid.');
+          NODE

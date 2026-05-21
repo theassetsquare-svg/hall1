@@ -1,1 +1,20 @@
+# SW + manifest passthrough (no rewrite to 404)
+/sw.js            /sw.js            200
+/site.webmanifest /site.webmanifest 200
+/manifest.json    /site.webmanifest 200
+/robots.txt       /robots.txt       200
+/sitemap.xml      /sitemap.xml      200
+/llms.txt         /llms.txt         200
+/feed.xml         /feed.xml         200
+
+# trailing slash normalization (canonical = with slash)
+/reservation   /reservation/   301
+/course        /course/        301
+/dresscode     /dresscode/     301
+/parking       /parking/       301
+/budget        /budget/        301
+/manners       /manners/       301
+/compare       /compare/       301
+
+# SPA / 404 fallback (must be LAST)
 /*  /404.html  404

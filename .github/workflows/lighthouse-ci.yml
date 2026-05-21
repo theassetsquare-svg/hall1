@@ -1,0 +1,66 @@
+name: Lighthouse CI (8 pages)
+
+on:
+  schedule:
+    # KST 12:30 = UTC 03:30
+    - cron: '30 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.13.x
+
+      - name: Run Lighthouse against live site
+        continue-on-error: true
+        run: |
+          lhci collect \
+            --url=https://hall1.pages.dev/ \
+            --url=https://hall1.pages.dev/reservation/ \
+            --url=https://hall1.pages.dev/course/ \
+            --url=https://hall1.pages.dev/dresscode/ \
+            --url=https://hall1.pages.dev/parking/ \
+            --url=https://hall1.pages.dev/budget/ \
+            --url=https://hall1.pages.dev/manners/ \
+            --url=https://hall1.pages.dev/compare/ \
+            --numberOfRuns=1 \
+            --settings.preset=desktop
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report-${{ github.run_number }}
+          path: .lighthouseci/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Mobile preset run
+        continue-on-error: true
+        run: |
+          rm -rf .lighthouseci || true
+          lhci collect \
+            --url=https://hall1.pages.dev/ \
+            --url=https://hall1.pages.dev/reservation/ \
+            --url=https://hall1.pages.dev/course/ \
+            --numberOfRuns=1
+
+      - name: Upload mobile Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-mobile-${{ github.run_number }}
+          path: .lighthouseci/
+          if-no-files-found: warn
+          retention-days: 30

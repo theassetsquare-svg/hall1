@@ -1,0 +1,30 @@
+{
+  "name": "일산명월관요정",
+  "short_name": "명월관",
+  "description": "일산명월관요정 — 경기도 일산의 전통 한정식 요정. 가야금 라이브, 한정식 15코스, 개별 룸.",
+  "lang": "ko-KR",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "portrait",
+  "background_color": "#FFF9F5",
+  "theme_color": "#8B0000",
+  "categories": ["food", "lifestyle", "entertainment"],
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" },
+    { "src": "/images/thumb-main.png", "sizes": "1200x1200", "type": "image/png", "purpose": "any" },
+    { "src": "/images/og-main.png", "sizes": "1200x1200", "type": "image/png", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "전화 010-3695-4929", "short_name": "전화", "description": "신실장 직통", "url": "tel:01036954929" },
+    { "name": "카카오톡 besta12", "short_name": "카톡", "description": "오픈채팅 문의", "url": "https://open.kakao.com/o/besta12" },
+    { "name": "예약 방법", "short_name": "예약", "description": "예약 가이드", "url": "/reservation/" },
+    { "name": "코스 안내", "short_name": "코스", "description": "한정식 코스", "url": "/course/" }
+  ],
+  "screenshots": [
+    { "src": "/images/og-main.png", "sizes": "1200x1200", "type": "image/png", "form_factor": "wide", "label": "일산명월관요정 메인" }
+  ],
+  "prefer_related_applications": false
+}

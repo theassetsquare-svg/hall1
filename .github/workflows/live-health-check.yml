@@ -1,0 +1,83 @@
+name: Live health check (every 6h)
+
+on:
+  schedule:
+    # every 6h: 00, 06, 12, 18 UTC = 09, 15, 21, 03 KST
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: HEAD all 8 pages
+        run: |
+          set +e
+          URLS=(
+            "https://hall1.pages.dev/"
+            "https://hall1.pages.dev/reservation/"
+            "https://hall1.pages.dev/course/"
+            "https://hall1.pages.dev/dresscode/"
+            "https://hall1.pages.dev/parking/"
+            "https://hall1.pages.dev/budget/"
+            "https://hall1.pages.dev/manners/"
+            "https://hall1.pages.dev/compare/"
+          )
+          FAIL=0
+          for u in "${URLS[@]}"; do
+            CODE=$(curl -sI -o /dev/null -w "%{http_code}" "$u")
+            if [[ "$CODE" != "200" ]]; then
+              echo "::error::$u → HTTP $CODE"
+              FAIL=$((FAIL+1))
+            else
+              echo "OK  $u → 200"
+            fi
+          done
+          if [[ $FAIL -gt 0 ]]; then echo "$FAIL page(s) failed"; exit 1; fi
+
+      - name: HEAD SEO/PWA files
+        run: |
+          set +e
+          URLS=(
+            "https://hall1.pages.dev/robots.txt"
+            "https://hall1.pages.dev/sitemap.xml"
+            "https://hall1.pages.dev/feed.xml"
+            "https://hall1.pages.dev/llms.txt"
+            "https://hall1.pages.dev/site.webmanifest"
+            "https://hall1.pages.dev/sw.js"
+          )
+          FAIL=0
+          for u in "${URLS[@]}"; do
+            CODE=$(curl -sI -o /dev/null -w "%{http_code}" "$u")
+            if [[ "$CODE" != "200" ]]; then
+              echo "::error::$u → HTTP $CODE"
+              FAIL=$((FAIL+1))
+            else
+              echo "OK  $u → 200"
+            fi
+          done
+          if [[ $FAIL -gt 0 ]]; then echo "$FAIL file(s) failed"; exit 1; fi
+
+      - name: Check homepage meta tags
+        run: |
+          HTML=$(curl -sL https://hall1.pages.dev/)
+          for t in 'canonical' 'og:title' 'og:image' 'twitter:card' 'manifest' 'application/ld+json' 'FAQPage' 'BarOrPub' 'NightClub' 'LocalBusiness' 'Restaurant'; do
+            if echo "$HTML" | grep -q "$t"; then
+              echo "OK  meta: $t"
+            else
+              echo "::error::missing meta: $t"
+              exit 1
+            fi
+          done
+
+      - name: Check 404 returns 404
+        run: |
+          CODE=$(curl -sI -o /dev/null -w "%{http_code}" https://hall1.pages.dev/__nope__)
+          if [[ "$CODE" != "404" ]]; then
+            echo "::error::404 fallback broken (got $CODE)"
+            exit 1
+          fi
+          echo "OK  404 fallback"
