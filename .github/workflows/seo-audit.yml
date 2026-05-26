@@ -1,0 +1,28 @@
+name: SEO audit — keyword density + uniqueness + alt + h1
+
+on:
+  schedule:
+    # KST 13:30 = UTC 04:30 (daily)
+    - cron: '30 4 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - '.github/workflows/seo-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run SEO audit
+        run: node scripts/seo-audit.mjs
