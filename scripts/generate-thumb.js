@@ -97,7 +97,7 @@ function generateThumb(page) {
   ctx.font = '38px Pretendard';
   ctx.fillStyle = 'white';
   ctx.globalAlpha = 0.55;
-  ctx.fillText('010-3695-4929', S / 2, 880);
+  ctx.fillText('', S / 2, 880);
   ctx.globalAlpha = 1;
 
   // Save

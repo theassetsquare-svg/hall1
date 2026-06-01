@@ -461,7 +461,7 @@ safeTimeout(function(){
 
   /* Exit Intent Popup */
   var ex=D.createElement('div');ex.className='exit-overlay';ex.id='exitOverlay';
-  ex.innerHTML='<div class="exit-popup" style="position:relative"><button class="exit-close" onclick="closeExit()">&times;</button><h3>잠깐! 이것만 보고 가세요</h3><p>아직 못 본 비밀 콘텐츠가 남아있어요.<br>80% 스크롤하면 숨겨진 이야기가 열립니다.</p><a class="exit-cta" href="tel:010-3695-4929" target="_blank" rel="noopener noreferrer">신실장에게 바로 전화</a></div>';
+  ex.innerHTML='<div class="exit-popup" style="position:relative"><button class="exit-close" onclick="closeExit()">&times;</button><h3>잠깐! 이것만 보고 가세요</h3><p>아직 못 본 비밀 콘텐츠가 남아있어요.<br>80% 스크롤하면 숨겨진 이야기가 열립니다.</p><a class="exit-cta" href="https://theassetsquare.com/" target="_blank" rel="noopener noreferrer">신실장에게 바로 전화</a></div>';
   D.body.appendChild(ex);
 
   /* Insert into content area */
