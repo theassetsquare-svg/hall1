@@ -87,7 +87,7 @@ const engageComponents = (p) => `
     <button class="exit-close" onclick="closeExit()">&times;</button>
     <h3>잠깐!</h3>
     <p>아직 못 본 내용이 남아있어요.<br>비밀 콘텐츠를 확인해보세요.</p>
-    <a class="exit-cta" href="https://theassetsquare.com/">신실장에게 바로 전화</a>
+    <a class="exit-cta" href="tel:010-3695-4929">신실장에게 바로 전화</a>
   </div>
 </div>
 `;
