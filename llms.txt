@@ -93,6 +93,6 @@ A. 일산요정은 일산 지역의 요정을 통칭. 일산명월관은 그중 
 
 ## 사이트 정보
 - 운영 시작: 2026년 4월 1일
-- 최종 갱신: 2026-07-04
+- 최종 갱신: 2026-07-05
 - 자동화: 24시간 GitHub Actions (sitemap/lighthouse/schema/health)
 - PWA 지원: site.webmanifest + sw.js
