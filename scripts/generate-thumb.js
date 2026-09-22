@@ -77,10 +77,10 @@ function generateThumb(page) {
   ctx.textBaseline = 'middle';
   ctx.fillText('일산명월관요정', S / 2, 390);
 
-  // "신실장" — 가장 크게!!!
+  // "일산룸 총책임자" — 가장 크게!!!
   ctx.font = '200px PretendardBlack';
   ctx.fillStyle = 'white';
-  ctx.fillText('신실장', S / 2, 600);
+  ctx.fillText('일산룸 총책임자', S / 2, 600);
 
   // Accent underline
   ctx.fillStyle = ACCENT;
@@ -97,7 +97,7 @@ function generateThumb(page) {
   ctx.font = '38px Pretendard';
   ctx.fillStyle = 'white';
   ctx.globalAlpha = 0.55;
-  ctx.fillText('010-3695-4929', S / 2, 880);
+  ctx.fillText('010-4117-5556', S / 2, 880);
   ctx.globalAlpha = 1;
 
   // Save

@@ -41,7 +41,7 @@ function buildGraph(slug, name, oldDesc, image) {
         keywords: '일산명월관요정, 일산명월관, 일산요정, 일산 한정식, 일산 룸식당',
         description: oldDesc,
         url,
-        telephone: '+82-10-3695-4929',
+        telephone: '+82-10-4117-5556',
         image,
         servesCuisine: ['Korean', '한정식'],
         priceRange: '₩₩₩',
@@ -51,9 +51,9 @@ function buildGraph(slug, name, oldDesc, image) {
         openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '17:00', closes: '23:00' }],
         acceptsReservations: 'True',
       },
-      { '@type': 'LocalBusiness', '@id': `${url}#localbusiness`, name: '일산명월관요정', url, telephone: '+82-10-3695-4929', image, priceRange: '₩₩₩', address: { '@type': 'PostalAddress', addressLocality: '고양시 일산', addressRegion: '경기도', addressCountry: 'KR' } },
-      { '@type': 'NightClub', '@id': `${url}#nightclub`, name: '일산명월관요정', url, telephone: '+82-10-3695-4929', image },
-      { '@type': 'BarOrPub', '@id': `${url}#barorpub`, name: '일산명월관요정', url, telephone: '+82-10-3695-4929', image, servesCuisine: '한정식', priceRange: '₩₩₩' },
+      { '@type': 'LocalBusiness', '@id': `${url}#localbusiness`, name: '일산명월관요정', url, telephone: '+82-10-4117-5556', image, priceRange: '₩₩₩', address: { '@type': 'PostalAddress', addressLocality: '고양시 일산', addressRegion: '경기도', addressCountry: 'KR' } },
+      { '@type': 'NightClub', '@id': `${url}#nightclub`, name: '일산명월관요정', url, telephone: '+82-10-4117-5556', image },
+      { '@type': 'BarOrPub', '@id': `${url}#barorpub`, name: '일산명월관요정', url, telephone: '+82-10-4117-5556', image, servesCuisine: '한정식', priceRange: '₩₩₩' },
     ],
   };
   return JSON.stringify(graph);
