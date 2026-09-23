@@ -18,7 +18,7 @@
     { "src": "/images/og-main.png", "sizes": "1200x1200", "type": "image/png", "purpose": "any" }
   ],
   "shortcuts": [
-    { "name": "전화 010-3695-4929", "short_name": "전화", "description": "신실장 직통", "url": "tel:01036954929" },
+    { "name": "전화 010-4117-5556", "short_name": "전화", "description": "일산룸 총책임자 직통", "url": "tel:01041175556" },
     { "name": "카카오톡 besta12", "short_name": "카톡", "description": "오픈채팅 문의", "url": "https://open.kakao.com/o/besta12" },
     { "name": "예약 방법", "short_name": "예약", "description": "예약 가이드", "url": "/reservation/" },
     { "name": "코스 안내", "short_name": "코스", "description": "한정식 코스", "url": "/course/" }
